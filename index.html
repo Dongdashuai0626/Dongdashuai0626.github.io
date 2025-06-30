@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>董嘉铖 | Personal Website</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #e6f0ff, #ffffff);
+            background: #f2f6fc;
             color: #333;
+            font-size: 19px;
         }
         nav {
             background: #001f3f;
@@ -19,23 +20,23 @@
         }
         nav a {
             color: #fff;
-            margin: 0 1em;
+            margin: 0 1.5em;
             font-weight: bold;
             text-decoration: none;
+            font-size: 18px;
         }
         nav a:hover {
             text-decoration: underline;
         }
         header {
-            background: #002b5c;
+            background: #003366;
             color: white;
-            padding: 2em 1em;
+            padding: 2.5em 1em;
             text-align: center;
-            position: relative;
         }
         header img {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             border: 4px solid white;
             object-fit: cover;
@@ -50,23 +51,27 @@
             margin-top: 0.5em;
         }
         section {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 2em auto;
             background: white;
-            padding: 2em;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2.5em;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         }
         h2 {
             color: #002b5c;
             border-bottom: 2px solid #dde6f1;
-            padding-bottom: 0.3em;
+            padding-bottom: 0.4em;
+            font-size: 1.8em;
+        }
+        ul li {
+            margin: 0.6em 0;
         }
         footer {
             text-align: center;
-            padding: 1.5em;
+            padding: 2em;
             background: #f0f0f0;
-            font-size: 0.9em;
+            font-size: 1em;
             margin-top: 2em;
         }
         a {
@@ -76,6 +81,10 @@
         a:hover {
             text-decoration: underline;
         }
+        p {
+            line-height: 1.6em;
+            margin-bottom: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +93,7 @@
         <a href="#education">Education</a>
         <a href="#awards">Awards</a>
         <a href="#interests">Interests</a>
+        <a href="#hobbies">Hobbies</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -91,9 +101,9 @@
     <header>
         <h1>董嘉铖 Jiacheng Dong</h1>
         <p>Undergraduate @ ZJU-UIUC Institute | EE Major | MIT EECS PhD Aspirant</p>
-        <img src="personal_photo.jpg" alt="Profile Photo">
+        <img src="personal_photo.jpg" alt="Profile Photo" />
         <div class="gpa">
-            Professional GPA: 4.0 / 4.0<br>
+            Professional GPA: 4.0 / 4.0<br />
             Cumulative GPA: 3.88 / 4.0
         </div>
         <div class="motto">成为一名改变世界的工程师！</div>
@@ -101,10 +111,9 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I’m currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute (2024–2028). I am passionate about signal integrity, 3D computer vision, and application of AI in the electromagnetic compatibility field. I aspire to join the MIT EECS PhD program in the future. I enjoy research and constantly explore interdisciplinary areas combining hardware, simulation, and intelligence.</p>
-        <p>I love playing table tennis, especially with a defensive long-pips backhand style. I won silver medals in both men's singles and doubles in the 2024 "Pioneer Cup" at the ZJU-UIUC Institute.</p>
-        <p>I am also actively engaged in public service. For two semesters in my freshman year, I participated in online volunteer teaching for two children from Mengshi Primary School in Yunnan Province, helping them improve academically and broaden their horizons. I have accumulated over 110 volunteer service hours.</p>
-        <p>Currently, I maintain a regular fitness and running routine to strengthen my physical health. Feel free to join me for a workout or a run!</p>
+        <p>
+            Hello! I’m currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute (2024–2028). I am passionate about signal integrity, 3D computer vision, and the application of AI in the electromagnetic compatibility field. I aspire to join the MIT EECS PhD program in the future. I enjoy research and constantly explore interdisciplinary areas combining hardware, simulation, and intelligence.
+        </p>
     </section>
 
     <section id="education">
@@ -117,8 +126,8 @@
     <section id="awards">
         <h2>Honors & Awards</h2>
         <ul>
-            <li>Outstanding Award, Mathematical Contest in Modeling (MCM), 2025 – Solved problem B on balancing tourism, ecology, and development in Juneau, Alaska, with a model that was later adopted by Sanya City.</li>
-            <li>SIAM Award (sponsored by Society for Industrial and Applied Mathematics), MCM 2025</li>
+            <li>Outstanding Award, Mathematical Contest in Modeling (MCM), 2025 – We solved Problem B, developing a system dynamics-based model addressing sustainable tourism in Juneau, Alaska. The model's generalizability was theoretically demonstrated through adaptation to the tourism challenges of Sanya, China.</li>
+            <li>SIAM Award, MCM 2025 (sponsored by the Society for Industrial and Applied Mathematics)</li>
         </ul>
     </section>
 
@@ -130,6 +139,19 @@
             <li>Large Language Models for Simulation Acceleration</li>
             <li>Brain-Inspired Hardware Design</li>
         </ul>
+    </section>
+
+    <section id="hobbies">
+        <h2>Hobbies & Volunteering</h2>
+        <p>
+            I love playing table tennis with a unique defensive long-pips backhand style. I won silver medals in both men's singles and doubles at the 2024 "Pioneer Cup" hosted by the ZJU-UIUC Institute.
+        </p>
+        <p>
+            I'm also passionate about public service. During my freshman year, I participated in two semesters of online volunteer teaching, supporting two students from Mengshi Primary School in Yunnan Province. This experience helped improve their academic performance and broaden their horizons. My volunteer service has exceeded 110 hours.
+        </p>
+        <p>
+            I currently maintain a regular fitness and running routine to enhance my physical health. Feel free to join me for a workout or a run!
+        </p>
     </section>
 
     <section id="projects">
