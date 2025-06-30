@@ -1,171 +1,159 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiacheng Dong | Personal Website</title>
-    <style>
-        :root{
-            --primary:#003366;
-            --link:#007acc;
-            --bg:#f4f7fb;
-        }
-        *{box-sizing:border-box;}
-        body{
-            font-family:Arial,Helvetica,sans-serif;
-            margin:0;
-            background:var(--bg);
-            color:#222;
-            line-height:1.65;
-            font-size:18px;
-        }
-        /*--- Top header & nav ---*/
-        header{
-            background:var(--primary);
-            color:#fff;
-            padding:2rem 1rem;
-        }
-        header h1{margin:0;font-size:2.4rem;}
-        header h2{margin:.2rem 0 0;font-size:1rem;font-weight:normal;opacity:.85;}
-        nav{
-            background:#222;
-            display:flex;
-            gap:1rem;
-            padding:.6rem 1rem;
-            position:sticky;
-            top:0;
-            z-index:10;
-        }
-        nav a{
-            color:#fff;
-            text-decoration:none;
-            padding:.5rem 1rem;
-            font-weight:bold;
-        }
-        nav a:hover{background:#444;}
-        /*--- Two‑column hero ---*/
-        .hero{
-            display:flex;
-            flex-wrap:wrap;
-            align-items:flex-start;
-            gap:2rem;
-            max-width:1200px;
-            margin:2rem auto;
-            padding:0 1rem;
-        }
-        .hero img{
-            width:260px;
-            border-radius:8px;
-            object-fit:cover;
-            flex-shrink:0;
-            border:4px solid #fff;
-            box-shadow:0 4px 12px rgba(0,0,0,.1);
-        }
-        .hero .intro{flex:1;min-width:260px;}
-        .hero .intro h3{margin-top:0;color:var(--primary);}
-        .tagline{font-style:italic;color:#555;margin:.4rem 0 1rem;}
-        /*--- Sections ---*/
-        section{
-            background:#fff;
-            max-width:1000px;
-            margin:2rem auto;
-            padding:2rem;
-            border-radius:12px;
-            box-shadow:0 4px 16px rgba(0,0,0,.06);
-        }
-        section h3{
-            margin-top:0;
-            color:var(--primary);
-            border-bottom:2px solid #e0e6ef;
-            padding-bottom:.4rem;
-        }
-        ul{padding-left:1.2rem;margin:0;}
-        ul li{margin:.4rem 0;}
-        a{color:var(--link);}
-        a:hover{text-decoration:underline;}
-        footer{
-            text-align:center;
-            padding:2rem 1rem;
-            font-size:.9rem;
-            color:#666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>董嘉铖 | Personal Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f6fc;
+      color: #333;
+      font-size: 19px;
+    }
+    nav {
+      background: #001f3f;
+      padding: 1em;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 0.9em;
+    }
+    .lang-switch button {
+      padding: 5px 10px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 2.5em 1em;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-top: 1em;
+    }
+    .gpa {
+      margin-top: 1em;
+      font-size: 1.1em;
+    }
+    .motto {
+      font-style: italic;
+      margin-top: 0.5em;
+    }
+    section {
+      max-width: 1000px;
+      margin: 2em auto;
+      background: white;
+      padding: 2.5em;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: #002b5c;
+      border-bottom: 2px solid #dde6f1;
+      padding-bottom: 0.4em;
+      font-size: 1.8em;
+    }
+    ul li {
+      margin: 0.6em 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #f0f0f0;
+      font-size: 1em;
+      margin-top: 2em;
+    }
+    a {
+      color: #0047ab;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    p {
+      line-height: 1.6em;
+      margin-bottom: 1.2em;
+    }
+    .cn { display: none; }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+      document.querySelectorAll('.cn').forEach(el => el.style.display = lang === 'cn' ? 'block' : 'none');
+    }
+  </script>
 </head>
-<body>
-<header>
-    <h1>董嘉铖 Jiacheng Dong</h1>
-    <h2>Undergraduate @ ZJU‑UIUC Institute | EE Major | MIT EECS PhD Aspirant</h2>
-</header>
+<body onload="switchLang('en')">
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#awards">Awards</a>
-    <a href="#interests">Interests</a>
-    <a href="#projects">Projects</a>
-    <a href="#hobbies">Hobbies</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero" id="about">
-    <div class="intro">
-        <h3>About Me</h3>
-        <p class="tagline">成为一名改变世界的工程师！</p>
-        <p>Hello! I’m currently pursuing my B.S. degree in Electrical Engineering at the ZJU‑UIUC Joint Institute (2024–2028). I am passionate about signal &amp; power integrity, 3D computer vision, and applying AI to electromagnetic compatibility problems. I aspire to join the MIT EECS PhD program in the future and enjoy exploring interdisciplinary topics that combine hardware, simulation, and intelligence.</p>
-        <p><strong>Professional GPA:</strong> 4.0/4.0 &nbsp;|&nbsp; <strong>Cumulative GPA:</strong> 3.88/4.0</p>
-    </div>
-    <img src="personal_photo.jpg" alt="Profile Photo">
+<div class="lang-switch">
+  Language: 
+  <button onclick="switchLang('en')">English</button>
+  <button onclick="switchLang('cn')">中文</button>
 </div>
 
-<section id="education">
-    <h3>Education</h3>
-    <ul>
-        <li><strong>B.S. in Electrical Engineering</strong>, ZJU‑UIUC Institute, Zhejiang University (2024–2028)</li>
-    </ul>
-</section>
-
-<section id="awards">
-    <h3>Honors &amp; Awards</h3>
-    <ul>
-        <li><strong>Outstanding Award</strong>, MCM 2025 – Developed a system‑dynamics tourism sustainability model for Juneau, Alaska, later theoretically extended to Sanya, China.</li>
-        <li><strong>SIAM Award</strong>, MCM 2025 (Society for Industrial and Applied Mathematics)</li>
-    </ul>
-</section>
-
-<section id="interests">
-    <h3>Research Interests</h3>
-    <ul>
-        <li>Signal &amp; Power Integrity</li>
-        <li>3D Computer Vision &amp; Point Cloud Segmentation</li>
-        <li>Large Language Models for Simulation Acceleration</li>
-        <li>Brain‑Inspired Hardware Design</li>
-    </ul>
-</section>
+<header>
+  <h1>董嘉铖 Jiacheng Dong</h1>
+  <p>Undergraduate @ ZJU-UIUC Institute | EE Major | MIT EECS PhD Aspirant</p>
+  <img src="personal_photo.jpg" alt="Profile Photo" />
+  <div class="gpa">Professional GPA: 4.0 / 4.0<br />Cumulative GPA: 3.88 / 4.0</div>
+  <div class="motto">成为一名改变世界的工程师！</div>
+</header>
 
 <section id="projects">
-    <h3>Projects &amp; Publications</h3>
-    <ul>
-        <li><strong>[Under Review]</strong> Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao. <em>MBS: Motion‑based Background Segmentation Framework for Large‑Scale Rapid Point Cloud Segmentation</em>. Submitted to <em>Pattern Recognition</em>.</li>
-        <li>Script‑driven HFSS Automation with LLMs – <em>In Progress</em></li>
-    </ul>
-</section>
-
-<section id="hobbies">
-    <h3>Hobbies &amp; Volunteering</h3>
-    <p>I love table tennis with a defensive long‑pips backhand style and won silver medals in both men's singles and doubles at the 2024 “Pioneer Cup”.</p>
-    <p>I volunteered two semesters of online teaching for Mengshi Primary School in Yunnan, totaling 110+ service hours, helping students improve academically and broaden horizons.</p>
-    <p>I keep a regular fitness &amp; running routine—feel free to join me!</p>
-</section>
-
-<section id="contact">
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:Dong48@illinois.edu">Dong48@illinois.edu</a></p>
-    <p>GitHub: <a href="https://github.com/Dongdashuai0626" target="_blank">Dongdashuai0626</a></p>
+  <h2>Projects & Publications</h2>
+  <ul>
+    <li class="en">
+      <strong>[Under Review]</strong> Jiacheng Dong, et al. 
+      <em>MBS: Motion-based Background Segmentation Framework for Large Scale Rapid Point Cloud Segmentation</em>. Submitted to Pattern Recognition.
+      <ul>
+        <li>Reimplemented the entire system in Python, achieving a 20× speedup over the original prototype.</li>
+        <li>Proposed and designed multiple real-world scenes—including three indoor environments, sculptures, statues, hydrants, and fountains—to evaluate model generalizability.</li>
+        <li>Coordinated team efforts for data collection, and led the experimental validation and ablation studies using the gathered 3D point cloud data.</li>
+        <li>Built and evaluated benchmarks against traditional background segmentation algorithms.</li>
+        <li>Led the full paper writing, covering methodology, system design, experimental results, and theoretical discussions.</li>
+        <li>Included a special case study using the Chu Kochen statue at Zhejiang University to demonstrate model robustness in outdoor scenarios.</li>
+      </ul>
+    </li>
+    <li class="cn">
+      <strong>[审稿中]</strong> 董嘉铖 等. 
+      <em>MBS: Motion-based Background Segmentation Framework for Large Scale Rapid Point Cloud Segmentation</em>. 投稿于 Pattern Recognition.
+      <ul>
+        <li>使用 Python 重构系统代码，实现 20 倍速度提升。</li>
+        <li>独立提出并设计多个真实场景（3 个室内环境、小型雕塑、大型雕像、消防栓、喷泉等），验证模型的泛化性。</li>
+        <li>协调团队采集数据，主导实验设计与消融分析。</li>
+        <li>构建并测试传统背景分割算法作为基准体系。</li>
+        <li>独立撰写论文全稿，涵盖方法、系统、实验与理论分析。</li>
+        <li>以竺可桢雕像为案例，展现模型在室外复杂场景中的适应能力。</li>
+      </ul>
+    </li>
+  </ul>
 </section>
 
 <footer>
-    &copy; 2025 Jiacheng Dong. Built with HTML &amp; CSS.
+  &copy; 2025 Jiacheng Dong. Built with HTML & CSS.
 </footer>
 </body>
 </html>
