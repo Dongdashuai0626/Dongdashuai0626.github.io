@@ -1,175 +1,171 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>董嘉铖 | Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiacheng Dong | Personal Website</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f2f6fc;
-            color: #333;
-            font-size: 19px;
+        :root{
+            --primary:#003366;
+            --link:#007acc;
+            --bg:#f4f7fb;
         }
-        nav {
-            background: #001f3f;
-            padding: 1em;
-            text-align: center;
+        *{box-sizing:border-box;}
+        body{
+            font-family:Arial,Helvetica,sans-serif;
+            margin:0;
+            background:var(--bg);
+            color:#222;
+            line-height:1.65;
+            font-size:18px;
         }
-        nav a {
-            color: #fff;
-            margin: 0 1.5em;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 18px;
+        /*--- Top header & nav ---*/
+        header{
+            background:var(--primary);
+            color:#fff;
+            padding:2rem 1rem;
         }
-        nav a:hover {
-            text-decoration: underline;
+        header h1{margin:0;font-size:2.4rem;}
+        header h2{margin:.2rem 0 0;font-size:1rem;font-weight:normal;opacity:.85;}
+        nav{
+            background:#222;
+            display:flex;
+            gap:1rem;
+            padding:.6rem 1rem;
+            position:sticky;
+            top:0;
+            z-index:10;
         }
-        header {
-            background: #003366;
-            color: white;
-            padding: 2.5em 1em;
-            text-align: center;
+        nav a{
+            color:#fff;
+            text-decoration:none;
+            padding:.5rem 1rem;
+            font-weight:bold;
         }
-        header img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            margin-top: 1em;
+        nav a:hover{background:#444;}
+        /*--- Two‑column hero ---*/
+        .hero{
+            display:flex;
+            flex-wrap:wrap;
+            align-items:flex-start;
+            gap:2rem;
+            max-width:1200px;
+            margin:2rem auto;
+            padding:0 1rem;
         }
-        .gpa {
-            margin-top: 1em;
-            font-size: 1.1em;
+        .hero img{
+            width:260px;
+            border-radius:8px;
+            object-fit:cover;
+            flex-shrink:0;
+            border:4px solid #fff;
+            box-shadow:0 4px 12px rgba(0,0,0,.1);
         }
-        .motto {
-            font-style: italic;
-            margin-top: 0.5em;
+        .hero .intro{flex:1;min-width:260px;}
+        .hero .intro h3{margin-top:0;color:var(--primary);}
+        .tagline{font-style:italic;color:#555;margin:.4rem 0 1rem;}
+        /*--- Sections ---*/
+        section{
+            background:#fff;
+            max-width:1000px;
+            margin:2rem auto;
+            padding:2rem;
+            border-radius:12px;
+            box-shadow:0 4px 16px rgba(0,0,0,.06);
         }
-        section {
-            max-width: 1000px;
-            margin: 2em auto;
-            background: white;
-            padding: 2.5em;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        section h3{
+            margin-top:0;
+            color:var(--primary);
+            border-bottom:2px solid #e0e6ef;
+            padding-bottom:.4rem;
         }
-        h2 {
-            color: #002b5c;
-            border-bottom: 2px solid #dde6f1;
-            padding-bottom: 0.4em;
-            font-size: 1.8em;
-        }
-        ul li {
-            margin: 0.6em 0;
-        }
-        footer {
-            text-align: center;
-            padding: 2em;
-            background: #f0f0f0;
-            font-size: 1em;
-            margin-top: 2em;
-        }
-        a {
-            color: #0047ab;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        p {
-            line-height: 1.6em;
-            margin-bottom: 1.2em;
+        ul{padding-left:1.2rem;margin:0;}
+        ul li{margin:.4rem 0;}
+        a{color:var(--link);}
+        a:hover{text-decoration:underline;}
+        footer{
+            text-align:center;
+            padding:2rem 1rem;
+            font-size:.9rem;
+            color:#666;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#awards">Awards</a>
-        <a href="#interests">Interests</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<header>
+    <h1>董嘉铖 Jiacheng Dong</h1>
+    <h2>Undergraduate @ ZJU‑UIUC Institute | EE Major | MIT EECS PhD Aspirant</h2>
+</header>
 
-    <header>
-        <h1>董嘉铖 Jiacheng Dong</h1>
-        <p>Undergraduate @ ZJU-UIUC Institute | EE Major | MIT EECS PhD Aspirant</p>
-        <img src="personal_photo.jpg" alt="Profile Photo" />
-        <div class="gpa">
-            Professional GPA: 4.0 / 4.0<br />
-            Cumulative GPA: 3.88 / 4.0
-        </div>
-        <div class="motto">成为一名改变世界的工程师！</div>
-    </header>
+<nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
+    <a href="#interests">Interests</a>
+    <a href="#projects">Projects</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hello! I’m currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute (2024–2028). I am passionate about signal integrity, 3D computer vision, and the application of AI in the electromagnetic compatibility field. I aspire to join the MIT EECS PhD program in the future. I enjoy research and constantly explore interdisciplinary areas combining hardware, simulation, and intelligence.
-        </p>
-    </section>
+<div class="hero" id="about">
+    <div class="intro">
+        <h3>About Me</h3>
+        <p class="tagline">成为一名改变世界的工程师！</p>
+        <p>Hello! I’m currently pursuing my B.S. degree in Electrical Engineering at the ZJU‑UIUC Joint Institute (2024–2028). I am passionate about signal &amp; power integrity, 3D computer vision, and applying AI to electromagnetic compatibility problems. I aspire to join the MIT EECS PhD program in the future and enjoy exploring interdisciplinary topics that combine hardware, simulation, and intelligence.</p>
+        <p><strong>Professional GPA:</strong> 4.0/4.0 &nbsp;|&nbsp; <strong>Cumulative GPA:</strong> 3.88/4.0</p>
+    </div>
+    <img src="personal_photo.jpg" alt="Profile Photo">
+</div>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>B.S. in Electrical Engineering, ZJU-UIUC Institute, Zhejiang University (2024–2028)</li>
-        </ul>
-    </section>
+<section id="education">
+    <h3>Education</h3>
+    <ul>
+        <li><strong>B.S. in Electrical Engineering</strong>, ZJU‑UIUC Institute, Zhejiang University (2024–2028)</li>
+    </ul>
+</section>
 
-    <section id="awards">
-        <h2>Honors & Awards</h2>
-        <ul>
-            <li>Outstanding Award, Mathematical Contest in Modeling (MCM), 2025 – We solved Problem B, developing a system dynamics-based model addressing sustainable tourism in Juneau, Alaska. The model's generalizability was theoretically demonstrated through adaptation to the tourism challenges of Sanya, China.</li>
-            <li>SIAM Award, MCM 2025 (sponsored by the Society for Industrial and Applied Mathematics)</li>
-        </ul>
-    </section>
+<section id="awards">
+    <h3>Honors &amp; Awards</h3>
+    <ul>
+        <li><strong>Outstanding Award</strong>, MCM 2025 – Developed a system‑dynamics tourism sustainability model for Juneau, Alaska, later theoretically extended to Sanya, China.</li>
+        <li><strong>SIAM Award</strong>, MCM 2025 (Society for Industrial and Applied Mathematics)</li>
+    </ul>
+</section>
 
-    <section id="interests">
-        <h2>Research Interests</h2>
-        <ul>
-            <li>Signal & Power Integrity</li>
-            <li>3D Computer Vision & Point Cloud Segmentation</li>
-            <li>Large Language Models for Simulation Acceleration</li>
-            <li>Brain-Inspired Hardware Design</li>
-        </ul>
-    </section>
+<section id="interests">
+    <h3>Research Interests</h3>
+    <ul>
+        <li>Signal &amp; Power Integrity</li>
+        <li>3D Computer Vision &amp; Point Cloud Segmentation</li>
+        <li>Large Language Models for Simulation Acceleration</li>
+        <li>Brain‑Inspired Hardware Design</li>
+    </ul>
+</section>
 
-    <section id="hobbies">
-        <h2>Hobbies & Volunteering</h2>
-        <p>
-            I love playing table tennis with a unique defensive long-pips backhand style. I won silver medals in both men's singles and doubles at the 2024 "Pioneer Cup" hosted by the ZJU-UIUC Institute.
-        </p>
-        <p>
-            I'm also passionate about public service. During my freshman year, I participated in two semesters of online volunteer teaching, supporting two students from Mengshi Primary School in Yunnan Province. This experience helped improve their academic performance and broaden their horizons. My volunteer service has exceeded 110 hours.
-        </p>
-        <p>
-            I currently maintain a regular fitness and running routine to enhance my physical health. Feel free to join me for a workout or a run!
-        </p>
-    </section>
+<section id="projects">
+    <h3>Projects &amp; Publications</h3>
+    <ul>
+        <li><strong>[Under Review]</strong> Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao. <em>MBS: Motion‑based Background Segmentation Framework for Large‑Scale Rapid Point Cloud Segmentation</em>. Submitted to <em>Pattern Recognition</em>.</li>
+        <li>Script‑driven HFSS Automation with LLMs – <em>In Progress</em></li>
+    </ul>
+</section>
 
-    <section id="projects">
-        <h2>Projects & Publications</h2>
-        <ul>
-            <li><strong>[Under Review]</strong> Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao. <em>MBS: Motion-based Background Segmentation Framework for Large Scale Rapid Point Cloud Segmentation</em>. Submitted to Pattern Recognition.</li>
-            <li>Script-driven HFSS automation with LLMs [In Progress]</li>
-        </ul>
-    </section>
+<section id="hobbies">
+    <h3>Hobbies &amp; Volunteering</h3>
+    <p>I love table tennis with a defensive long‑pips backhand style and won silver medals in both men's singles and doubles at the 2024 “Pioneer Cup”.</p>
+    <p>I volunteered two semesters of online teaching for Mengshi Primary School in Yunnan, totaling 110+ service hours, helping students improve academically and broaden horizons.</p>
+    <p>I keep a regular fitness &amp; running routine—feel free to join me!</p>
+</section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: Dong48@illinois.edu</p>
-        <p>GitHub: <a href="https://github.com/Dongdashuai0626" target="_blank">Dongdashuai0626</a></p>
-    </section>
+<section id="contact">
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:Dong48@illinois.edu">Dong48@illinois.edu</a></p>
+    <p>GitHub: <a href="https://github.com/Dongdashuai0626" target="_blank">Dongdashuai0626</a></p>
+</section>
 
-    <footer>
-        &copy; 2025 Jiacheng Dong. Built with HTML & CSS.
-    </footer>
+<footer>
+    &copy; 2025 Jiacheng Dong. Built with HTML &amp; CSS.
+</footer>
 </body>
 </html>
