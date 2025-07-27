@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiacheng Dong | Personal Website</title>
+    <style>
+        :root{
+            --primary:#003366;
+            --link:#007acc;
+            --bg:#f4f7fb;
+        }
+        *{box-sizing:border-box;}
+        body{
+            font-family:Arial,Helvetica,sans-serif;
+            margin:0;
+            background:var(--bg);
+            color:#222;
+            line-height:1.65;
+            font-size:18px;
+        }
+        /*--- Top header & nav ---*/
+        header{
+            background:var(--primary);
+            color:#fff;
+            padding:2rem 1rem;
+        }
+        header h1{margin:0;font-size:2.4rem;}
+        header h2{margin:.2rem 0 0;font-size:1rem;font-weight:normal;opacity:.85;}
+        nav{
+            background:#222;
+            display:flex;
+            gap:1rem;
+            padding:.6rem 1rem;
+            position:sticky;
+            top:0;
+            z-index:10;
+        }
+        nav a{
+            color:#fff;
+            text-decoration:none;
+            padding:.5rem 1rem;
+            font-weight:bold;
+        }
+        nav a:hover{background:#444;}
+        /*--- Two‑column hero ---*/
+        .hero{
+            display:flex;
+            flex-wrap:wrap;
+            align-items:flex-start;
+            gap:2rem;
+            max-width:1200px;
+            margin:2rem auto;
+            padding:0 1rem;
+        }
+        .hero img{
+            width:260px;
+            border-radius:8px;
+            object-fit:cover;
+            flex-shrink:0;
+            border:4px solid #fff;
+            box-shadow:0 4px 12px rgba(0,0,0,.1);
+        }
+        .hero .intro{flex:1;min-width:260px;}
+        .hero .intro h3{margin-top:0;color:var(--primary);}
+        .tagline{font-style:italic;color:#555;margin:.4rem 0 1rem;}
+        /*--- Sections ---*/
+        section{
+            background:#fff;
+            max-width:1000px;
+            margin:2rem auto;
+            padding:2rem;
+            border-radius:12px;
+            box-shadow:0 4px 16px rgba(0,0,0,.06);
+        }
+        section h3{
+            margin-top:0;
+            color:var(--primary);
+            border-bottom:2px solid #e0e6ef;
+            padding-bottom:.4rem;
+        }
+        ul{padding-left:1.2rem;margin:0;}
+        ul li{margin:.4rem 0;}
+        a{color:var(--link);}
+        a:hover{text-decoration:underline;}
+        footer{
+            text-align:center;
+            padding:3rem 1rem 2rem;
+            font-size:.9rem;
+            color:#666;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-top: 1px solid #dee2e6;
+            margin-top: 2rem;
+        }
+        
+        .footer-content{
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-links{
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a{
+            color: var(--link);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover{
+            text-decoration: underline;
+        }
+        
+        .website-info{
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>董嘉铖 Jiacheng Dong</h1>
+    <h2>Undergraduate at ZJU‑UIUC Institute | Electrical Engineering Major | Aspiring MIT EECS Ph.D. Student</h2>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
+    <a href="#interests">Interests</a>
+    <a href="#projects">Projects</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="blog.html">Blog</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero" id="about">
+    <div class="intro">
+        <h3>About Me</h3>
+        <p class="tagline">成为一名改变世界的工程师！</p>
+        <p>Hello! I am currently pursuing my B.S. degree in Electrical Engineering at the ZJU‑UIUC Joint Institute of Zhejiang University (2024–2028). I am passionate about computer vision, artificial intelligence and 3D vision. In the future, I aspire to join the Ph.D. program in Electrical Engineering and Computer Science at MIT.</p>
+        <p><strong>Professional GPA:</strong> 4.0/4.0 &nbsp;|&nbsp; <strong>Cumulative GPA:</strong> 3.88/4.0</p>
+    </div>
+    <img src="personal_photo.jpg" alt="Profile Photo">
+</div>
+
+<section id="education">
+    <h3>Education</h3>
+    <ul>
+        <li><strong>B.S. in Electrical Engineering</strong>, ZJU‑UIUC Institute, Zhejiang University (2024–2028)</li>
+        <li><strong>Intending to complete a Minor in Computer Science</strong>, University of Illinois Urbana-Champaign (2024-2028)</li>
+    </ul>
+</section>
+
+<section id="awards">
+    <h3>Honors &amp; Awards</h3>
+    <ul>
+        <li><strong>Outstanding Award</strong>, MCM 2025 – Developed a system dynamics model for tourism sustainability in Juneau, Alaska; this model was later extended theoretically to Sanya, China.</li>
+        <li><strong>SIAM Award</strong>, MCM 2025 – Awarded by the Society for Industrial and Applied Mathematics.</li>
+    </ul>
+</section>
+
+<section id="interests">
+    <h3>Research Interests</h3>
+    <ul>
+        <li>Computer Vision</li>
+        <li>Artificial Intelligence</li>
+        <li>3D Vision</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h3>Projects &amp; Publications</h3>
+    <ul>
+        <li>
+            <p><strong>[Under Review]</strong> Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, and Jixing Cao. <em>MBS: Motion‑based Background Segmentation Framework for Large‑Scale Rapid Point Cloud Segmentation</em>. Submitted to <em>Pattern Recognition</em>.</p>
+            <p>I rewrote the original implementation in Python, achieving a 20× increase in performance. I also proposed and designed multiple real-world 3D point cloud scenarios to evaluate our framework, ranging from indoor scenes to outdoor objects such as small sculptures, statues, hydrants, and fountains. Notably, the Chu Kochen statue was featured as a key outdoor case study in our paper. In addition, I coordinated with my teammates to collect comprehensive data for these scenarios and led the design of rigorous experimental validations and benchmarks to assess the framework's performance. Furthermore, I took the lead in writing the entire manuscript, covering the methodology, implementation details, experimental results, and analysis.</p>
+        </li>
+    </ul>
+</section>
+
+<section id="hobbies">
+    <h3>Hobbies &amp; Volunteering</h3>
+    <p>I like playing table tennis and I use the backhand long rubber chop style. I won silver medals in both the men's singles and men's doubles events at the 2024 “Pioneer Cup.” My Kaiquowang rating currently stands at 1600.</p>
+    
+    <p>During my freshman year, I participated in an online teaching program where I mentored two students from Mengshi Primary School in Yunnan Province, helping them improve academically and broaden their horizons. Since September 2024, I have also served as a video production team member in the Publicity and New Media Center at ZJUI, actively contributing to campus activities. As of now, I have accumulated over <strong>130 hours</strong> of volunteer service.</p>
+    
+    <p>Outside of academics and volunteering, I’m passionate about music—especially rock and folk. I performed as the drummer in the piece <em>Boulevard of Broken Dreams</em> during the ZJUI 2024 Freshman Welcome Ceremony. I’m also a big fan of the Taiwanese indie rock band <em>No Party for Cao Dong</em>.</p>
+
+    <p>Additionally, I’m an avid fan of anime and galgames. Some of my favorite series include <em>JoJo’s Bizarre Adventure</em>, <em>Charlotte</em>, and <em>Oshi no Ko</em>. I’ve also played countless galgames, with a particular fondness for the works of YuzuSoft. If you share similar interests, feel free to reach out—Ciallo～(∠・ω＜)⌒☆</p>
+
+    <p>I also maintain a regular fitness and running routine — feel free to join me for a workout or a jog!</p>
+</section>
+
+
+<section id="contact">
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:Dong48@illinois.edu">Dong48@illinois.edu</a></p>
+    <p>GitHub: <a href="https://github.com/Dongdashuai0626" target="_blank">Dongdashuai0626</a></p>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="mailto:Dong48@illinois.edu">Email</a>
+            <a href="https://github.com/Dongdashuai0626" target="_blank">GitHub</a>
+            <a href="#about">关于我</a>
+            <a href="blog.html">博客</a>
+        </div>
+        <div>&copy; 2025 Jiacheng Dong. Built with HTML &amp; CSS.</div>
+        <div class="website-info">
+            个人网站：<a href="https://dongjiacheng06.github.io" target="_blank">dongjiacheng06.github.io</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

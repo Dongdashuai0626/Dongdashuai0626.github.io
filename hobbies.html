@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies & Interests - Jiacheng Dong</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --background: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --dark: #343a40;
+            --success: #28a745;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--background);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Style for same-page navigation (anchors) */
+        .nav-section {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(44, 62, 80, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .nav-section a {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.6rem;
+            color: var(--primary);
+        }
+
+        .nav-section a:hover {
+            background: rgba(44, 62, 80, 0.1);
+            color: var(--accent);
+        }
+
+        /* Style for external pages */
+        .nav-external {
+            display: flex;
+            gap: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .nav-external a {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-external a:hover {
+            background: rgba(52, 152, 219, 0.15);
+            color: var(--primary);
+        }
+
+        /* Add small icon to indicate external links */
+        .nav-external a::after {
+            content: "↗";
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+            opacity: 0.7;
+        }
+
+        /* Current page indicator */
+        .nav-external a.current {
+            background: var(--accent);
+            color: white;
+        }
+
+        .nav-external a.current:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Hobby Cards */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hobby-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .hobby-with-image {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .hobby-image {
+            flex-shrink: 0;
+        }
+
+        .hobby-image img {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .hobby-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .hobby-content p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .hobby-content strong {
+            color: var(--accent);
+        }
+
+        .hobby-content em {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        /* Special styling for cards without images */
+        .hobby-card:not(.has-image) {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+        }
+
+        .hobby-card:not(.has-image) h3 {
+            color: white;
+        }
+
+        .hobby-card:not(.has-image) p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hobby-card:not(.has-image) strong {
+            color: #ffd700;
+        }
+
+        .hobby-card:not(.has-image) em {
+            color: #87ceeb;
+        }
+
+        /* Special styling for plain white cards */
+        .hobby-card.plain-white {
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .hobby-card.plain-white h3 {
+            color: var(--primary);
+        }
+
+        .hobby-card.plain-white p {
+            color: var(--dark);
+        }
+
+        .hobby-card.plain-white strong {
+            color: var(--accent);
+        }
+
+        /* Back to home link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-section, .nav-external {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hobby-with-image {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hobby-image {
+                align-self: center;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Jiacheng Dong</a>
+            <ul class="nav-links">
+                <!-- Main page sections -->
+                <li class="nav-section">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#education">Education</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external">
+                    <a href="hobbies.html" class="current">Hobbies</a>
+                    <a href="blog.html">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+        <div class="header">
+            <h1>🎯 Hobbies & Interests</h1>
+            <p>Beyond my academic pursuits, I have various interests that keep my life enriching and balanced. Here are some activities I'm passionate about in my spare time:</p>
+        </div>
+
+        <div class="hobbies-grid">
+            <!-- Table Tennis -->
+            <div class="hobby-card has-image">
+                <div class="hobby-with-image">
+                    <div class="hobby-image">
+                        <img src="zsh.jpg" alt="Zhu Shihe" loading="lazy">
+                    </div>
+                    <div class="hobby-content">
+                        <h3>🏓 Table Tennis</h3>
+                        <p>I'm passionate about table tennis and use the backhand long rubber chop style. My idol is <strong>Zhu Shihe (朱世赫)</strong>, the legendary Korean chopper who inspired me to start playing this defensive style. I won silver medals in both men's singles and doubles at the 2024 "Pioneer Cup" tournament.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anime & Galgames -->
+            <div class="hobby-card has-image">
+                <div class="hobby-with-image">
+                    <div class="hobby-image">
+                        <img src="yozo.jpg" alt="YuzuSoft Games" loading="lazy">
+                    </div>
+                    <div class="hobby-content">
+                        <h3>🎮 Anime & Galgames</h3>
+                        <p>I'm an avid fan of anime and galgames. Some of my favorite anime series include <em>JoJo's Bizarre Adventure</em>, <em>Charlotte</em>, and <em>Oshi no Ko</em>. I have a particular fondness for galgames from <strong>YuzuSoft</strong>, having played countless titles from this developer. If you share similar interests, feel free to reach out—Ciallo～(∠・ω＜)⌒☆</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music & Performance -->
+            <div class="hobby-card has-image">
+                <div class="hobby-with-image">
+                    <div class="hobby-image">
+                        <img src="band.jpg" alt="Band Performance" loading="lazy">
+                    </div>
+                    <div class="hobby-content">
+                        <h3>🎵 Music & Performance</h3>
+                        <p>I'm passionate about music, especially rock and folk. I performed as the drummer for <em>Boulevard of Broken Dreams</em> during the ZJUI 2024 Freshman Welcome Ceremony. I'm also a big fan of the Taiwanese indie rock band <em>No Party for Cao Dong (草东没有派对)</em>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteering -->
+            <div class="hobby-card has-image">
+                <div class="hobby-with-image">
+                    <div class="hobby-image">
+                        <img src="volunteer.png" alt="Volunteering" loading="lazy">
+                    </div>
+                    <div class="hobby-content">
+                        <h3>🤝 Volunteering</h3>
+                        <p>During my freshman year, I participated in an online teaching program where I mentored two students from Mengshi Primary School in Yunnan Province, helping them improve academically and broaden their horizons. I have accumulated over <strong>130 hours</strong> of volunteer service, believing in giving back to the community.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fitness & Sports -->
+            <div class="hobby-card plain-white">
+                <div class="hobby-content">
+                    <h3>💪 Fitness & Sports</h3>
+                    <p>I maintain a regular fitness and running routine to stay healthy and energized. Feel free to join me for a workout or a jog if you're ever on campus! Regular exercise keeps me physically healthy and provides the energy needed for academic research.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
