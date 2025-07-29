@@ -8,412 +8,7 @@
     <meta name="keywords" content="Jiacheng Dong, personal website, Computer vision, 3D vision, research, ZJU-UIUC Institute">
     <meta name="author" content="Jiacheng Dong">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root{
-            --primary:#2c3e50;
-            --accent:#3498db;
-            --text:#333;
-            --light-bg:#f8f9fa;
-            --white:#ffffff;
-            --gray:#6c757d;
-            --border:#e9ecef;
-        }
-        
-        *{
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
-        }
-        
-        body{
-            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-            line-height:1.6;
-            color:var(--text);
-            background:var(--light-bg);
-        }
-        
-        .container{
-            max-width:1200px;
-            margin:0 auto;
-            padding:0 20px;
-        }
-        
-        /* Header */
-        header{
-            background:var(--white);
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
-            position:sticky;
-            top:0;
-            z-index:100;
-        }
-        
-        nav{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:1rem 0;
-        }
-        
-        .logo{
-            font-size:1.5rem;
-            font-weight:700;
-            color:var(--primary);
-        }
-        
-        .nav-links{
-            display:flex;
-            list-style:none;
-            gap:2rem;
-            align-items:center;
-        }
-        
-        .nav-links a{
-            text-decoration:none;
-            color:var(--text);
-            font-weight:500;
-            transition:color 0.3s;
-            padding:0.5rem 0.8rem;
-            border-radius:6px;
-            transition:all 0.3s ease;
-        }
-        
-        .nav-links a:hover{
-            color:var(--accent);
-            background:rgba(52,152,219,0.1);
-        }
-        
-        /* Style for same-page navigation (anchors) */
-        .nav-section{
-            display:flex;
-            gap:1.5rem;
-            padding:0.3rem 0.8rem;
-            background:rgba(44,62,80,0.05);
-            border-radius:8px;
-            border-left:3px solid var(--primary);
-        }
-        
-        .nav-section a{
-            font-size:0.9rem;
-            padding:0.3rem 0.6rem;
-            color:var(--primary);
-        }
-        
-        .nav-section a:hover{
-            background:rgba(44,62,80,0.1);
-            color:var(--accent);
-        }
-        
-        /* Style for external pages */
-        .nav-external{
-            display:flex;
-            gap:1rem;
-            padding:0.3rem 0.8rem;
-            background:rgba(52,152,219,0.05);
-            border-radius:8px;
-            border-left:3px solid var(--accent);
-        }
-        
-        .nav-external a{
-            font-size:0.9rem;
-            padding:0.3rem 0.8rem;
-            color:var(--accent);
-            font-weight:600;
-            position:relative;
-        }
-        
-        .nav-external a:hover{
-            background:rgba(52,152,219,0.15);
-            color:var(--primary);
-        }
-        
-        /* Add small icon to indicate external links */
-        .nav-external a::after{
-            content:"↗";
-            font-size:0.7rem;
-            margin-left:0.3rem;
-            opacity:0.7;
-        }
-        
-        /* Hero Section */
-        .hero{
-            background:var(--white);
-            padding:4rem 0;
-        }
-        
-        .hero-content{
-            display:grid;
-            grid-template-columns:1fr 200px;
-            gap:3rem;
-            align-items:center;
-        }
-        
-        .hero-text h1{
-            font-size:3rem;
-            font-weight:700;
-            color:var(--primary);
-            margin-bottom:0.5rem;
-        }
-        
-        .hero-text .subtitle{
-            font-size:1.2rem;
-            color:var(--gray);
-            margin-bottom:1rem;
-        }
-        
-        .hero-text p{
-            font-size:1.1rem;
-            margin-bottom:1.5rem;
-        }
-        
-        .hero-image{
-            text-align:center;
-        }
-        
-        .hero-image img{
-            width:200px;
-            height:200px;
-            border-radius:50%;
-            object-fit:cover;
-            border:4px solid var(--border);
-        }
-        
-        .social-links{
-            display:flex;
-            gap:1rem;
-        }
-        
-        .social-links a{
-            padding:0.5rem 1rem;
-            background:var(--accent);
-            color:var(--white);
-            text-decoration:none;
-            border-radius:5px;
-            transition:background 0.3s;
-        }
-        
-        .social-links a:hover{
-            background:var(--primary);
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        /* Sections */
-        .section{
-            padding:3rem 0;
-        }
-        
-        .section-title{
-            font-size:2rem;
-            font-weight:700;
-            color:var(--primary);
-            margin-bottom:2rem;
-            position:relative;
-            padding-left:1rem;
-        }
-        
-        .section-title::before{
-            content:'';
-            position:absolute;
-            left:0;
-            top:0;
-            width:4px;
-            height:100%;
-            background:var(--accent);
-        }
-        
-        .card{
-            background:var(--white);
-            border-radius:10px;
-            padding:2rem;
-            margin-bottom:2rem;
-            box-shadow:0 2px 10px rgba(0,0,0,0.05);
-            border:1px solid var(--border);
-        }
-        
-        /* News Section */
-        .news-item{
-            display:flex;
-            align-items:flex-start;
-            padding:1rem 0;
-            border-bottom:1px solid var(--border);
-        }
-        
-        .news-item:last-child{
-            border-bottom:none;
-        }
-        
-        .news-date{
-            font-weight:700;
-            color:var(--accent);
-            min-width:100px;
-            margin-right:1rem;
-        }
-        
-        .news-content{
-            flex:1;
-        }
-        
-        .news-emoji{
-            margin-right:0.5rem;
-        }
-        
-        /* Experience Section */
-        .experience-item{
-            margin-bottom:2rem;
-            padding-bottom:2rem;
-            border-bottom:1px solid var(--border);
-        }
-        
-        .experience-item:last-child{
-            border-bottom:none;
-        }
-        
-        .experience-header{
-            display:flex;
-            justify-content:space-between;
-            align-items:flex-start;
-            margin-bottom:1rem;
-        }
-        
-        .experience-title{
-            font-size:1.3rem;
-            font-weight:600;
-            color:var(--primary);
-        }
-        
-        .experience-company{
-            color:var(--accent);
-            font-weight:500;
-        }
-        
-        .experience-date{
-            color:var(--gray);
-            font-size:0.9rem;
-        }
-        
-        /* Awards */
-        .award-item{
-            margin-bottom:1.5rem;
-        }
-        
-        .award-title{
-            font-weight:600;
-            color:var(--primary);
-        }
-        
-        .award-details{
-            color:var(--gray);
-            margin-top:0.5rem;
-        }
-        
-        /* Publications */
-        .publication-item{
-            margin-bottom:2rem;
-            padding-bottom:2rem;
-            border-bottom:1px solid var(--border);
-            overflow:hidden;
-        }
-        
-        .publication-item:last-child{
-            border-bottom:none;
-        }
-        
-        .publication-content{
-            clear:both;
-            margin-top:1rem;
-        }
-        
-        /* Footer */
-        footer{
-            background:var(--primary);
-            color:var(--white);
-            text-align:center;
-            padding:2rem 0;
-            margin-top:4rem;
-        }
-        
-        .footer-links{
-            display:flex;
-            justify-content:center;
-            gap:2rem;
-            margin-bottom:1rem;
-        }
-        
-        .footer-links a{
-            color:var(--white);
-            text-decoration:none;
-        }
-        
-        .footer-links a:hover{
-            text-decoration:underline;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px){
-            .hero-content{
-                grid-template-columns:1fr;
-                text-align:center;
-            }
-            
-            .hero-text h1{
-                font-size:2.5rem;
-            }
-            
-            .nav{
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .nav-links{
-                display:none;
-                flex-direction:column;
-                width:100%;
-                background:var(--white);
-                box-shadow:0 2px 10px rgba(0,0,0,0.1);
-                margin-top:1rem;
-                border-radius:8px;
-            }
-            
-            .nav-links.active{
-                display:flex;
-            }
-            
-            .nav-toggle{
-                display:block;
-                background:var(--accent);
-                color:var(--white);
-                padding:0.5rem 1rem;
-                border:none;
-                border-radius:5px;
-                cursor:pointer;
-                font-size:1rem;
-            }
-            
-            .nav-links a{
-                width: 100%;
-                text-align: left;
-                padding: 0.5rem 1rem;
-            }
-            
-            .nav-section{
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .nav-external{
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .experience-header{
-                flex-direction:column;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section');
@@ -445,10 +40,11 @@
     </script>
 </head>
 <body>
+    <!-- Navigation -->
     <header>
         <nav class="container">
-            <div class="logo">Jiacheng Dong</div>
-            <button class="nav-toggle">Menu</button>
+            <a href="index.html" class="logo">Jiacheng Dong</a>
+            <button class="nav-toggle">☰</button>
             <ul class="nav-links">
                 <!-- Main page sections -->
                 <li class="nav-section">
@@ -478,7 +74,7 @@
                         <h1>Jiacheng Dong</h1>
                         <p class="subtitle">董嘉铖</p>
                         <p class="subtitle">Undergraduate at ZJU-UIUC Institute | Electrical Engineering Major</p>
-                        <p>Hello! I am currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (2024–2028). I am passionate about <strong>3D vision</strong>, <strong>3D Gaussian Splatting</strong>, and <strong>3D reconstruction</strong>. I recently joined the <strong>CVNext Lab</strong> in July 2025, where I work on cutting-edge research in computer vision and AI.</p>
+                        <p>Hello! I am currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (2024–2028). I am passionate about <strong>3D vision</strong>, <strong>3D Gaussian Splatting</strong>, and <strong>3D reconstruction</strong>. I recently joined the <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> in July 2025, where I work on cutting-edge research in computer vision and AI.</p>
                         <p><strong>Professional GPA:</strong> 4.0/4.0 | <strong>Cumulative GPA:</strong> 3.88/4.0</p>
                         <div class="social-links">
                             <a href="mailto:Dong48@illinois.edu"><i class="fas fa-envelope"></i>Email</a>
@@ -487,7 +83,7 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="personal_photo.jpg" alt="Jiacheng Dong">
+                        <img src="personal_photo.jpg" alt="Jiacheng Dong" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -501,7 +97,7 @@
                     <div class="news-item">
                         <div class="news-date">2025.07</div>
                         <div class="news-content">
-                            <span class="news-emoji">🎈</span>Great honor to join the <strong>CVNext Lab</strong> at ZJU-UIUC Institute as a research assistant!
+                            <span class="news-emoji">🎈</span>Great honor to join the <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> at ZJU-UIUC Institute as a research intern!
                         </div>
                     </div>
                     <div class="news-item">
@@ -513,7 +109,7 @@
                     <div class="news-item">
                         <div class="news-date">2025.03</div>
                         <div class="news-content">
-                            <span class="news-emoji">🔬</span>Joined <strong>Prof. Hanzhi Ma's Lab</strong> to study electromagnetic compatibility and artificial intelligence.
+                            <span class="news-emoji">🔬</span>Joined <strong><a href="https://person.zju.edu.cn/mahanzhi" target="_blank">Prof. Hanzhi Ma's Lab</a></strong> to study electromagnetic compatibility and artificial intelligence.
                         </div>
                     </div>
                     <div class="news-item">
@@ -525,7 +121,7 @@
                     <div class="news-item">
                         <div class="news-date">2024.11</div>
                         <div class="news-content">
-                            <span class="news-emoji">🧪</span>Started my first research experience at <strong>Prof. Jixing Cao's Lab</strong> focusing on computer vision and point cloud processing.
+                            <span class="news-emoji">🧪</span>Started my first research experience at <strong><a href="https://person.zju.edu.cn/caojixing" target="_blank">Prof. Jixing Cao's Lab</a></strong> focusing on computer vision and point cloud processing.
                         </div>
                     </div>
                     <div class="news-item">
@@ -539,12 +135,12 @@
         </section>
 
         <!-- Research Section -->
-        <section id="research" class="section" style="background:var(--white);">
+        <section id="research" class="section">
             <div class="container">
                 <h2 class="section-title">🔎 Research</h2>
                 <div class="card">
                     <p>I focus on developing intelligent systems that bridge the gap between 2D and 3D vision. My current research interests include:</p>
-                    <ul style="margin:1rem 0; padding-left:2rem;">
+                    <ul>
                         <li><strong>3D Gaussian Splatting:</strong> Novel view synthesis and 3D scene reconstruction</li>
                         <li><strong>3D Vision:</strong> Point cloud processing and 3D scene understanding</li>
                         <li><strong>3D Reconstruction:</strong> Interested in further applications of camera trajectory points during the reconstruction process</li>
@@ -562,7 +158,7 @@
                         <div class="experience-header">
                             <div>
                                 <div class="experience-title">Research Assistant</div>
-                                <div class="experience-company">CVNext Lab, ZJU-UIUC Institute</div>
+                                                                <div class="experience-company"><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a>, ZJU-UIUC Institute</div>
                             </div>
                             <div class="experience-date">July 2025 - Present</div>
                         </div>
@@ -572,7 +168,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <div class="experience-title">Research Assistant</div>
+                                <div class="experience-title">Research Intern</div>
                                 <div class="experience-company"><a href="https://person.zju.edu.cn/mahanzhi" target="_blank">Prof. Hanzhi Ma's Lab</a>, ZJU-UIUC Institute</div>
                             </div>
                             <div class="experience-date">March 2025 - July 2025</div>
@@ -595,14 +191,14 @@
         </section>
 
         <!-- Publications Section -->
-        <section id="publications" class="section" style="background:var(--white);">
+        <section id="publications" class="section">
             <div class="container">
                 <h2 class="section-title">📃 Publications</h2>
                 <div class="card">
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <img src="TBR.png" alt="TBR Framework" style="width:100px;height:60px;object-fit:cover;border-radius:6px;margin-right:1rem;float:left;">
+                                <img src="TBR.png" alt="TBR Framework" style="width:100px;height:60px;object-fit:cover;border-radius:6px;margin-right:1rem;float:left;" loading="lazy">
                                 <div class="experience-title">[Under Review] TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds</div>
                                 <div class="experience-company">Pattern Recognition</div>
                             </div>
@@ -635,7 +231,7 @@
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="section" style="background:var(--white);">
+        <section id="education" class="section">
             <div class="container">
                 <h2 class="section-title">🎓 Education</h2>
                 <div class="card">
@@ -666,7 +262,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section" style="background:var(--white);">
+        <section id="contact" class="section">
             <div class="container">
                 <h2 class="section-title">📧 Contact</h2>
                 <div class="card">
@@ -675,7 +271,7 @@
                     <p><strong>Institution:</strong> ZJU-UIUC Institute, Zhejiang University</p>
                     <p><strong>Lab:</strong> <a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></p>
                     
-                    <div style="margin-top:2rem;padding:1.5rem;background:var(--light-bg);border-radius:8px;border-left:4px solid var(--accent);">
+                    <div class="info-box">
                         <h4 style="margin-top:0;color:var(--primary);">💡 Mentoring & Guidance</h4>
                         <p>I am deeply grateful to the many seniors who have guided and supported me throughout my research journey. Their mentorship has been invaluable and has shaped my academic growth significantly. I believe in paying this kindness forward.</p>
                         <p><strong>If you are a junior student</strong> interested in computer vision, 3D vision, research opportunities, or just want to chat about academic life, please feel free to reach out via email. I'm always happy to share my experiences and help where I can. Let's schedule a time to connect!</p>
@@ -685,6 +281,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-links">

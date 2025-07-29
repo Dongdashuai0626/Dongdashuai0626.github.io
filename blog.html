@@ -4,334 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客 | Jiacheng Dong</title>
-    <style>
-        :root{
-            --primary:#003366;
-            --link:#007acc;
-            --bg:#f4f7fb;
-        }
-        *{box-sizing:border-box;}
-        body{
-            font-family:'Microsoft YaHei', Arial, Helvetica, sans-serif;
-            margin:0;
-            background:var(--bg);
-            color:#222;
-            line-height:1.65;
-            font-size:18px;
-        }
-        /*--- Top header & nav ---*/
-        header{
-            background:var(--primary);
-            color:#fff;
-            padding:2rem 1rem;
-        }
-        header h1{margin:0;font-size:2.4rem;}
-        header h2{margin:.2rem 0 0;font-size:1rem;font-weight:normal;opacity:.85;}
-        nav{
-            background:#222;
-            display:flex;
-            gap:1rem;
-            padding:.6rem 1rem;
-            position:sticky;
-            top:0;
-            z-index:10;
-            align-items:center;
-        }
-        nav a{
-            color:#fff;
-            text-decoration:none;
-            padding:.5rem 1rem;
-            font-weight:bold;
-            border-radius:6px;
-            transition:all 0.3s ease;
-        }
-        nav a:hover{background:#444;}
-        nav a.active{background:#007acc;}
-        
-        /* Style for same-page navigation (anchors) */
-        .nav-section{
-            display:flex;
-            gap:0.8rem;
-            padding:0.3rem 0.8rem;
-            background:rgba(255,255,255,0.1);
-            border-radius:8px;
-            border-left:3px solid #fff;
-        }
-        
-        .nav-section a{
-            font-size:0.9rem;
-            padding:0.3rem 0.6rem;
-            color:#fff;
-        }
-        
-        .nav-section a:hover{
-            background:rgba(255,255,255,0.2);
-            color:#fff;
-        }
-        
-        /* Style for external pages */
-        .nav-external{
-            display:flex;
-            gap:0.8rem;
-            padding:0.3rem 0.8rem;
-            background:rgba(0,122,204,0.2);
-            border-radius:8px;
-            border-left:3px solid #007acc;
-        }
-        
-        .nav-external a{
-            font-size:0.9rem;
-            padding:0.3rem 0.8rem;
-            color:#87ceeb;
-            font-weight:600;
-            position:relative;
-        }
-        
-        .nav-external a:hover{
-            background:rgba(0,122,204,0.3);
-            color:#fff;
-        }
-        
-        /* Add small icon to indicate external links */
-        .nav-external a::after{
-            content:"↗";
-            font-size:0.7rem;
-            margin-left:0.3rem;
-            opacity:0.7;
-        }
-        
-        /* Current page indicator */
-        .nav-external a.active{
-            background:#007acc;
-            color:#fff;
-        }
-        
-        .nav-external a.active:hover{
-            background:#005a8b;
-            color:#fff;
-        }
-        
-        /*--- Main content ---*/
-        .container{
-            max-width:1000px;
-            margin:2rem auto;
-            padding:0 1rem;
-        }
-        
-        /*--- Blog post cards ---*/
-        .blog-grid{
-            display:grid;
-            gap:2rem;
-            margin-top:2rem;
-        }
-        
-        .blog-card{
-            background:#fff;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 4px 16px rgba(0,0,0,.06);
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .blog-card:hover{
-            transform:translateY(-5px);
-            box-shadow:0 8px 25px rgba(0,0,0,.12);
-        }
-        
-        .blog-card-header{
-            padding:1.5rem 2rem 1rem;
-        }
-        
-        .blog-card h3{
-            margin:0 0 .5rem;
-            color:var(--primary);
-            font-size:1.4rem;
-        }
-        
-        .blog-meta{
-            color:#666;
-            font-size:.9rem;
-            margin-bottom:1rem;
-        }
-        
-        .blog-excerpt{
-            color:#555;
-            margin-bottom:1.5rem;
-        }
-        
-        .blog-tags{
-            display:flex;
-            gap:.5rem;
-            flex-wrap:wrap;
-            margin-bottom:1rem;
-        }
-        
-        .tag{
-            background:#e3f2fd;
-            color:#1976d2;
-            padding:.3rem .8rem;
-            border-radius:20px;
-            font-size:.8rem;
-            font-weight:500;
-        }
-        
-        .read-more{
-            display:inline-block;
-            color:var(--link);
-            text-decoration:none;
-            font-weight:bold;
-            padding:.5rem 0;
-        }
-        
-        .read-more:hover{
-            text-decoration:underline;
-        }
-        
-        .page-title{
-            background: linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(0,122,204,0.05) 100%),
-                        url('3dgs.png') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-            padding:3rem 2rem;
-            border-radius:12px;
-            box-shadow:0 4px 16px rgba(0,0,0,.06);
-            margin-bottom:2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-title::before{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,51,102,0.85) 0%, rgba(0,122,204,0.75) 100%);
-            z-index: 1;
-        }
-        
-        .page-title > *{
-            position: relative;
-            z-index: 2;
-            color: white;
-        }
-        
-        .page-title h1{
-            margin:0;
-            color: white;
-            border-bottom:2px solid rgba(255,255,255,0.3);
-            padding-bottom:.4rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .page-title p{
-            margin:.5rem 0 0;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        footer{
-            text-align:center;
-            padding:3rem 1rem 2rem;
-            font-size:.9rem;
-            color:#666;
-            margin-top:3rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-top: 1px solid #dee2e6;
-        }
-        
-        .footer-content{
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .footer-links{
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links a{
-            color: var(--link);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: 500;
-        }
-        
-        .footer-links a:hover{
-            text-decoration: underline;
-        }
-        
-        .website-info{
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </head>
 <body>
-<header>
-    <h1>董嘉铖 Jiacheng Dong</h1>
-    <h2>技术博客 | Technical Blog</h2>
-</header>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Jiacheng Dong</a>
+            <button class="nav-toggle">Menu</button>
+            <ul class="nav-links">
+                <!-- Main page sections -->
+                <li class="nav-section">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#education">Education</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external">
+                    <a href="hobbies.html">Hobbies</a>
+                    <a href="blog.html" class="active">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav>
-        <!-- Main page sections -->
-        <div class="nav-section">
-            <a href="index.html">About</a>
-            <a href="index.html#news">News</a>
-            <a href="index.html#research">Research</a>
-            <a href="index.html#experience">Experience</a>
-            <a href="index.html#education">Education</a>
-            <a href="index.html#awards">Awards</a>
-            <a href="index.html#contact">Contact</a>
+    <div class="container">
+        <div class="page-title">
+            <h1>技术博客</h1>
+            <p>分享技术经验与学习心得</p>
         </div>
-        <!-- External pages -->
-        <div class="nav-external">
-            <a href="hobbies.html">Hobbies</a>
-            <a href="blog.html" class="active">Blog</a>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <h3>3D Gaussian Splatting 本地部署完整指南</h3>
+                    <div class="blog-meta">
+                        <span>发布时间：2025年7月27日</span> | <span>作者：董嘉铖</span>
+                    </div>
+                    <div class="blog-tags">
+                        <span class="tag">3D Vision</span>
+                        <span class="tag">CUDA</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Windows</span>
+                        <span class="tag">环境配置</span>
+                        <span class="tag">TBR Framework</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        在Windows 11 + CUDA 11.8环境下部署3D Gaussian Splatting遇到的问题与解决方案。本文详细记录了从环境准备到成功运行的完整过程，包括Visual Studio版本冲突、中文路径问题、GLM库缺失等常见问题的解决方法。这些经验同样适用于其他3D视觉项目如TBR框架的部署。
+                    </p>
+                    <a href="blog-3dgs.html" class="read-more">阅读全文 →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <h3>DSG-World: Learning a 3D Gaussian World Model from Dual State Videos</h3>
+                    <div class="blog-meta">
+                        <span>发布时间：2025年7月29日</span> | <span>作者：董嘉铖</span>
+                    </div>
+                    <div class="blog-tags">
+                        <span class="tag">3D Vision</span>
+                        <span class="tag">Neural Rendering</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <p class="blog-excerpt">
+                        本文介绍了一种名为DSG-World的新方法，可以从双状态视频中学习3D高斯世界模型。该方法能够从有限的、稀疏的真实观测中构建一个完整、可编辑的三维世界模型，包括物体遮挡的部分。
+                    </p>
+                    <a href="blog-dgs.html" class="read-more">阅读全文 →</a>
+                </div>
+            </article>
         </div>
-    </nav><div class="container">
-    <div class="page-title">
-        <h1>技术博客</h1>
-        <p>分享技术经验与学习心得</p>
     </div>
-    
-    <div class="blog-grid">
-        <article class="blog-card">
-            <div class="blog-card-header">
-                <h3>3D Gaussian Splatting 本地部署完整指南</h3>
-                <div class="blog-meta">
-                    <span>发布时间：2025年7月27日</span> | <span>作者：董嘉铖</span>
-                </div>
-                <div class="blog-tags">
-                    <span class="tag">3D Vision</span>
-                    <span class="tag">CUDA</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Windows</span>
-                    <span class="tag">环境配置</span>
-                    <span class="tag">TBR Framework</span>
-                </div>
-                <p class="blog-excerpt">
-                    在Windows 11 + CUDA 11.8环境下部署3D Gaussian Splatting遇到的问题与解决方案。本文详细记录了从环境准备到成功运行的完整过程，包括Visual Studio版本冲突、中文路径问题、GLM库缺失等常见问题的解决方法。这些经验同样适用于其他3D视觉项目如TBR框架的部署。
-                </p>
-                <a href="blog-3dgs.html" class="read-more">阅读全文 →</a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:Dong48@illinois.edu">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank">GitHub</a>
+                <a href="index.html">主页</a>
+                <a href="blog.html">博客</a>
             </div>
-        </article>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="mailto:Dong48@illinois.edu">Email</a>
-            <a href="https://github.com/dongjiacheng06" target="_blank">GitHub</a>
-            <a href="index.html">主页</a>
-            <a href="blog.html">博客</a>
+            <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
+            <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" style="color:#fff;">dongjiacheng06.github.io</a>
+            </div>
         </div>
-        <div>&copy; 2025 Jiacheng Dong. Built with HTML &amp; CSS.</div>
-        <div class="website-info">
-            个人网站：<a href="https://dongjiacheng06.github.io" target="_blank">dongjiacheng06.github.io</a>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
