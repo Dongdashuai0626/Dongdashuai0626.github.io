@@ -11,32 +11,64 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const navToggle = document.querySelector('.nav-toggle');
+                    const sections = document.querySelectorAll('section');
+                    const navLinks = document.querySelectorAll('.nav-links a');
+                    const navToggle = document.querySelector('.nav-toggle');
+        
+                    window.addEventListener('scroll', () => {
+                        let current = '';
+        
+                        sections.forEach(section => {
+                            const sectionTop = section.offsetTop;
+                            if (pageYOffset >= sectionTop - 60) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').includes(current)) {
+                                link.classList.add('active');
+                            }
+                        });
+                    });
+        
+                    navToggle.addEventListener('click', () => {
+                        // 在桌面端不响应点击事件
+                        if (window.innerWidth > 768) {
+                            return;
+                        }
+                        
+                        console.log('Nav toggle clicked');
+                        const navLinks = document.querySelector('.nav-links');
+                        console.log('Nav links before toggle:', navLinks.classList);
+                        navLinks.classList.toggle('active');
+                        navToggle.classList.toggle('active');
+                        console.log('Nav links after toggle:', navLinks.classList);
+                    });
 
-            window.addEventListener('scroll', () => {
-                let current = '';
+                    // 滚动动画处理
+                    const animateElements = document.querySelectorAll('.scroll-animate');
+                    const observerOptions = {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: 0.1
+                    };
 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 60) {
-                        current = section.getAttribute('id');
-                    }
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('animate');
+                                // 可选：观察器在元素进入视口后停止观察它
+                                // observer.unobserve(entry.target);
+                            }
+                        });
+                    }, observerOptions);
+
+                    animateElements.forEach(element => {
+                        observer.observe(element);
+                    });
                 });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            navToggle.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.toggle('active');
-            });
-        });
     </script>
 </head>
 <body>
@@ -44,7 +76,11 @@
     <header>
         <nav class="container">
             <a href="index.html" class="logo">Jiacheng Dong</a>
-            <button class="nav-toggle">☰</button>
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
             <ul class="nav-links">
                 <!-- Main page sections -->
                 <li class="nav-section">
@@ -68,7 +104,7 @@
     <main>
         <!-- Hero Section -->
         <section id="about" class="hero">
-            <div class="container">
+            <div class="container scroll-animate">
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>Jiacheng Dong</h1>
@@ -91,7 +127,7 @@
 
         <!-- News Section -->
         <section id="news" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-1">
                 <h2 class="section-title">🔥 News</h2>
                 <div class="card">
                     <div class="news-item">
@@ -136,7 +172,7 @@
 
         <!-- Research Section -->
         <section id="research" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-2">
                 <h2 class="section-title">🔎 Research</h2>
                 <div class="card">
                     <p>I focus on developing intelligent systems that bridge the gap between 2D and 3D vision. My current research interests include:</p>
@@ -151,7 +187,7 @@
 
         <!-- Experience Section -->
         <section id="experience" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-3">
                 <h2 class="section-title">💼 Experience</h2>
                 <div class="card">
                     <div class="experience-item">
@@ -192,7 +228,7 @@
 
         <!-- Publications Section -->
         <section id="publications" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-1">
                 <h2 class="section-title">📃 Publications</h2>
                 <div class="card">
                     <div class="experience-item">
@@ -213,7 +249,7 @@
 
         <!-- Awards Section -->
         <section id="awards" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-2">
                 <h2 class="section-title">🎖 Awards & Honors</h2>
                 <div class="card">
                     <div class="award-item">
@@ -232,7 +268,7 @@
 
         <!-- Education Section -->
         <section id="education" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-3">
                 <h2 class="section-title">🎓 Education</h2>
                 <div class="card">
                     <div class="experience-item">
@@ -263,7 +299,7 @@
 
         <!-- Contact Section -->
         <section id="contact" class="section">
-            <div class="container">
+            <div class="container scroll-animate delay-4">
                 <h2 class="section-title">📧 Contact</h2>
                 <div class="card">
                     <p><strong>Email:</strong> <a href="mailto:Dong48@illinois.edu">Dong48@illinois.edu</a></p>

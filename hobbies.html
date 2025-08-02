@@ -7,11 +7,32 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
             const navToggle = document.querySelector('.nav-toggle');
-            
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
             if (navToggle) {
                 navToggle.addEventListener('click', () => {
                     document.querySelector('.nav-links').classList.toggle('active');
+                    navToggle.classList.toggle('active');
                 });
             }
         });
@@ -22,7 +43,11 @@
     <header>
         <nav class="container">
             <a href="index.html" class="logo">Jiacheng Dong</a>
-            <button class="nav-toggle">Menu</button>
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
             <ul class="nav-links">
                 <!-- Main page sections -->
                 <li class="nav-section">
