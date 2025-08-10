@@ -7,101 +7,61 @@
     <meta name="description" content="Jiacheng Dong's personal website showcasing research, experience, and achievements in computer vision and 3D vision.">
     <meta name="keywords" content="Jiacheng Dong, personal website, Computer vision, 3D vision, research, ZJU-UIUC Institute">
     <meta name="author" content="Jiacheng Dong">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-                    const sections = document.querySelectorAll('section');
-                    const navLinks = document.querySelectorAll('.nav-links a');
-                    const navToggle = document.querySelector('.nav-toggle');
-        
-                    window.addEventListener('scroll', () => {
-                        let current = '';
-        
-                        sections.forEach(section => {
-                            const sectionTop = section.offsetTop;
-                            if (pageYOffset >= sectionTop - 60) {
-                                current = section.getAttribute('id');
-                            }
-                        });
-        
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').includes(current)) {
-                                link.classList.add('active');
-                            }
-                        });
-                    });
-        
-                    navToggle.addEventListener('click', () => {
-                        // 在桌面端不响应点击事件
-                        if (window.innerWidth > 768) {
-                            return;
-                        }
-                        
-                        console.log('Nav toggle clicked');
-                        const navLinks = document.querySelector('.nav-links');
-                        console.log('Nav links before toggle:', navLinks.classList);
-                        navLinks.classList.toggle('active');
-                        navToggle.classList.toggle('active');
-                        console.log('Nav links after toggle:', navLinks.classList);
-                    });
-
-                    // 滚动动画处理
-                    const animateElements = document.querySelectorAll('.scroll-animate');
-                    const observerOptions = {
-                        root: null,
-                        rootMargin: '0px',
-                        threshold: 0.1
-                    };
-
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('animate');
-                                // 可选：观察器在元素进入视口后停止观察它
-                                // observer.unobserve(entry.target);
-                            }
-                        });
-                    }, observerOptions);
-
-                    animateElements.forEach(element => {
-                        observer.observe(element);
-                    });
-                });
-    </script>
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//cvnext.github.io">
+    
+    <!-- Favicon and PWA icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Jiacheng Dong</a>
-            <button class="nav-toggle">
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
-                <li class="nav-section">
-                    <a href="#about">About</a>
-                    <a href="#news">News</a>
-                    <a href="#research">Research</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#education">Education</a>
-                    <a href="#awards">Awards</a>
-                    <a href="#contact">Contact</a>
+                <li class="nav-section" role="none">
+                    <a href="#about" aria-label="About section">About</a>
+                    <a href="#news" aria-label="News section">News</a>
+                    <a href="#research" aria-label="Research section">Research</a>
+                    <a href="#experience" aria-label="Experience section">Experience</a>
+                    <a href="#education" aria-label="Education section">Education</a>
+                    <a href="#awards" aria-label="Awards section">Awards</a>
+                    <a href="#contact" aria-label="Contact section">Contact</a>
                 </li>
                 <!-- External pages -->
-                <li class="nav-external">
-                    <a href="hobbies.html">Hobbies</a>
-                    <a href="blog.html">Blog</a>
+                <li class="nav-external" role="none">
+                    <a href="hobbies.html" aria-label="Visit hobbies page">Hobbies</a>
+                    <a href="blog.html" aria-label="Visit blog page">Blog</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="main">
         <!-- Hero Section -->
         <section id="about" class="hero">
             <div class="container scroll-animate">
@@ -119,7 +79,7 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="personal_photo.jpg" alt="Jiacheng Dong" loading="lazy">
+                        <img src="assets/images/personal_photo.jpg" alt="Portrait of Jiacheng Dong" loading="lazy" width="200" height="200">
                     </div>
                 </div>
             </div>
@@ -234,7 +194,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <img src="TBR.png" alt="TBR Framework" style="width:100px;height:60px;object-fit:cover;border-radius:6px;margin-right:1rem;float:left;" loading="lazy">
+                                <img src="assets/images/TBR.png" alt="TBR Framework" style="width:100px;height:60px;object-fit:cover;border-radius:6px;margin-right:1rem;float:left;" loading="lazy" width="100" height="60">
                                 <div class="experience-title">[Under Review] TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds</div>
                                 <div class="experience-company">Pattern Recognition</div>
                             </div>
@@ -318,17 +278,17 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="mailto:Dong48@illinois.edu">Email</a>
-                <a href="https://github.com/dongjiacheng06" target="_blank">GitHub</a>
-                <a href="blog.html">Blog</a>
-                <a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a>
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="blog.html" aria-label="Visit blog page">Blog</a>
+                <a href="https://cvnext.github.io/" target="_blank" rel="noopener" aria-label="Visit CVNext Lab website">CVNext Lab</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
-                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" style="color:#fff;">dongjiacheng06.github.io</a>
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
             </div>
         </div>
     </footer>

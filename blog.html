@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客 | Jiacheng Dong</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Favicon and PWA icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
     <!-- MathJax configuration -->
     <script>
         window.MathJax = {
@@ -21,107 +35,22 @@
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const navToggle = document.querySelector('.nav-toggle');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 60) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            if (navToggle) {
-                navToggle.addEventListener('click', () => {
-                    document.querySelector('.nav-links').classList.toggle('active');
-                    navToggle.classList.toggle('active');
-                });
-            }
-            
-            // 触发页面加载动画
-            setTimeout(() => {
-                const blogGrid = document.querySelector('.blog-grid');
-                if (blogGrid) {
-                    blogGrid.classList.add('loaded');
-                }
-            }, 100);
-            
-            // 滚动触发动画 - Intersection Observer API
-            const animateOnScroll = () => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate');
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-                
-                // 观察所有需要动画的元素
-                document.querySelectorAll('.scroll-animate').forEach(el => {
-                    observer.observe(el);
-                });
-            };
-            
-            // 初始化滚动动画
-            animateOnScroll();
-                            
-            // 波纹效果
-            const createRipple = (event) => {
-                const button = event.currentTarget;
-                const circle = document.createElement("span");
-                const diameter = Math.max(button.offsetWidth, button.offsetHeight);
-                const radius = diameter / 2;
-                
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
-                circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
-                circle.classList.add("ripple");
-                
-                const ripple = button.getElementsByClassName("ripple")[0];
-                if (ripple) {
-                    ripple.remove();
-                }
-                
-                button.appendChild(circle);
-            };
-            
-            // 为所有按钮和链接添加波纹效果
-            document.querySelectorAll('.nav-links a, .nav-toggle, .read-more, .back-to-blog, .social-links a').forEach(button => {
-                button.addEventListener('click', createRipple);
-            });
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Jiacheng Dong</a>
-                        <button class="nav-toggle">
-                            <span class="hamburger"></span>
-                            <span class="hamburger"></span>
-                            <span class="hamburger"></span>
-                        </button>
-                        <ul class="nav-links">
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
-                <li class="nav-section">
+                <li class="nav-section" role="none">
                     <a href="index.html#about">About</a>
                     <a href="index.html#news">News</a>
                     <a href="index.html#research">Research</a>
@@ -131,16 +60,16 @@
                     <a href="index.html#contact">Contact</a>
                 </li>
                 <!-- External pages -->
-                <li class="nav-external">
+                <li class="nav-external" role="none">
                     <a href="hobbies.html">Hobbies</a>
-                    <a href="blog.html" class="active">Blog</a>
+                    <a href="blog.html" class="active" aria-current="page">Blog</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <div class="page-title">
+        <div class="page-title scroll-animate">
             <h1>技术博客</h1>
             <p>分享技术经验与学习心得</p>
         </div>
@@ -344,17 +273,17 @@
 
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="mailto:Dong48@illinois.edu">Email</a>
-                <a href="https://github.com/dongjiacheng06" target="_blank">GitHub</a>
-                <a href="index.html">主页</a>
-                <a href="blog.html">博客</a>
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="index.html" aria-label="Visit homepage">主页</a>
+                <a href="blog.html" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
-                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" style="color:#fff;">dongjiacheng06.github.io</a>
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
             </div>
         </div>
     </footer>
