@@ -1,3 +1,0 @@
-# TransMVSNet
-
-Status: To read

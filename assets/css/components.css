@@ -301,6 +301,146 @@
   border-radius: var(--border-radius-sm);
 }
 
+/* ===== 摄影弹窗与图片查看器 ===== */
+.photography-modal {
+  display: none;
+  position: fixed;
+  z-index: var(--z-modal, 1000);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.photography-modal.show {
+  display: block;
+}
+
+.photography-modal-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 4rem auto;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: var(--spacing-xl);
+}
+
+/* 单张照片查看器（适配纵图） */
+.photo-modal {
+  display: none;
+  position: fixed;
+  z-index: var(--z-modal, 1000);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.photo-modal.show { display: block; }
+
+.photo-modal-content {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-modal-image {
+  max-width: min(92vw, 1200px);
+  max-height: calc(95vh - 120px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 纵向图片优化：略缩小宽度，保证一屏完整展示 */
+.photo-modal-image.portrait {
+  max-width: min(70vw, 900px);
+  max-height: calc(95vh - 140px);
+}
+
+/* 极端纵向图（高宽比>1.8）进一步收窄，减少视觉压迫 */
+.photo-modal-image.ultra-portrait {
+  max-width: min(55vw, 720px);
+  max-height: calc(92vh - 150px);
+}
+
+/* 点击切换铺满宽度的模式（便于查看细节） */
+.photo-modal-image.fit-width {
+  max-width: 96vw;
+  max-height: calc(92vh - 140px);
+}
+
+@media (max-width: 768px) {
+  .photo-modal-image,
+  .photo-modal-image.portrait,
+  .photo-modal-image.ultra-portrait {
+    max-width: 92vw;
+    max-height: 82vh;
+  }
+}
+
+.photo-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.photo-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.photo-nav-btn {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.photo-nav-btn:hover { background: var(--accent); transform: scale(1.05); }
+.photo-nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+.photo-nav-btn:disabled:hover { background: rgba(0,0,0,.5); transform: none; }
+
 /* ===== 加载状态 ===== */
 .loading {
   opacity: 0.6;

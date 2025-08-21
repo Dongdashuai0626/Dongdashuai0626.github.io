@@ -26,13 +26,17 @@
 </head>
 <body>
     <!-- Navigation -->
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Jiacheng Dong</a>
-            <button class="nav-toggle">Menu</button>
-            <ul class="nav-links">
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
-                <li class="nav-section">
+                <li class="nav-section" role="none">
                     <a href="index.html#about">About</a>
                     <a href="index.html#news">News</a>
                     <a href="index.html#research">Research</a>
@@ -42,9 +46,10 @@
                     <a href="index.html#contact">Contact</a>
                 </li>
                 <!-- External pages -->
-                <li class="nav-external">
+                <li class="nav-external" role="none">
                     <a href="hobbies.html">Hobbies</a>
-                    <a href="blog.html" class="active">Blog</a>
+                    <a href="photography.html">Photography</a>
+                    <a href="blog.html" class="active" aria-current="page">Blog</a>
                 </li>
             </ul>
         </nav>
@@ -534,17 +539,17 @@ RGB C = Σ_i c_i·α_i·G_i·∏_(j<i)(1-α_j·G_j)
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="mailto:Dong48@illinois.edu">Email</a>
-                <a href="https://github.com/dongjiacheng06" target="_blank">GitHub</a>
-                <a href="index.html">主页</a>
-                <a href="blog.html">博客</a>
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="index.html" aria-label="Visit homepage">主页</a>
+                <a href="blog.html" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
-                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" style="color:#fff;">dongjiacheng06.github.io</a>
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
             </div>
         </div>
     </footer>

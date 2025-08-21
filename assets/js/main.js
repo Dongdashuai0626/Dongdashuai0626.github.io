@@ -13,6 +13,7 @@ class WebsiteCore {
         this.initScrollAnimations();
         this.initRippleEffects();
         this.initPageTransitions();
+        this.initPhotoGallery();
     }
 
     // 导航功能
@@ -213,6 +214,146 @@ class WebsiteCore {
                 }
             }, 300);
         }, duration);
+    }
+
+    // 摄影画廊功能
+    initPhotoGallery() {
+        const photoItems = document.querySelectorAll('.photo-item');
+        const photoModal = document.getElementById('photoModal');
+        const modalImage = document.querySelector('.photo-modal-image');
+        const closeBtn = document.querySelector('.photo-modal-close');
+        const prevBtn = document.querySelector('.photo-prev');
+        const nextBtn = document.querySelector('.photo-next');
+
+        if (!photoItems.length || !photoModal) return;
+
+        let currentPhotoIndex = 0;
+        const photos = Array.from(photoItems).map(item => ({
+            src: item.dataset.photo,
+            alt: item.querySelector('img').alt
+        }));
+
+        // 打开模态框
+        const openModal = (index) => {
+            currentPhotoIndex = index;
+            modalImage.src = photos[index].src;
+            modalImage.alt = photos[index].alt;
+            photoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // 更新导航按钮状态
+            updateNavButtons();
+            
+            // 预加载相邻图片
+            preloadAdjacentImages(index);
+        };
+
+        // 关闭模态框
+        const closeModal = () => {
+            photoModal.classList.remove('show');
+            document.body.style.overflow = '';
+        };
+
+        // 显示上一张照片
+        const showPrevPhoto = () => {
+            if (currentPhotoIndex > 0) {
+                openModal(currentPhotoIndex - 1);
+            }
+        };
+
+        // 显示下一张照片
+        const showNextPhoto = () => {
+            if (currentPhotoIndex < photos.length - 1) {
+                openModal(currentPhotoIndex + 1);
+            }
+        };
+
+        // 更新导航按钮状态
+        const updateNavButtons = () => {
+            prevBtn.disabled = currentPhotoIndex === 0;
+            nextBtn.disabled = currentPhotoIndex === photos.length - 1;
+        };
+
+        // 预加载相邻图片
+        const preloadAdjacentImages = (index) => {
+            // 预加载前一张
+            if (index > 0) {
+                const prevImg = new Image();
+                prevImg.src = photos[index - 1].src;
+            }
+            // 预加载后一张
+            if (index < photos.length - 1) {
+                const nextImg = new Image();
+                nextImg.src = photos[index + 1].src;
+            }
+        };
+
+        // 事件监听器
+        photoItems.forEach((item, index) => {
+            item.addEventListener('click', () => openModal(index));
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        prevBtn.addEventListener('click', showPrevPhoto);
+        nextBtn.addEventListener('click', showNextPhoto);
+
+        // 点击模态框背景关闭
+        photoModal.addEventListener('click', (e) => {
+            if (e.target === photoModal) {
+                closeModal();
+            }
+        });
+
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (!photoModal.classList.contains('show')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeModal();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    showPrevPhoto();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    showNextPhoto();
+                    break;
+            }
+        });
+
+        // 触摸滑动支持（移动设备）
+        let startX = 0;
+        let startY = 0;
+        
+        modalImage.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+
+        modalImage.addEventListener('touchend', (e) => {
+            if (!startX || !startY) return;
+
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+
+            // 确保水平滑动距离大于垂直滑动距离
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > 50) { // 最小滑动距离
+                    if (diffX > 0) {
+                        showNextPhoto(); // 向左滑显示下一张
+                    } else {
+                        showPrevPhoto(); // 向右滑显示上一张
+                    }
+                }
+            }
+
+            startX = 0;
+            startY = 0;
+        });
     }
 }
 

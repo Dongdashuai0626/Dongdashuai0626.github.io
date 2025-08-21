@@ -857,6 +857,520 @@ nav {
   color: var(--accent);
 }
 
+/* 摄影画廊样式 */
+.photography-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f8f9fa;
+  aspect-ratio: 4/3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.05);
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.photo-overlay i {
+  color: white;
+  font-size: 2rem;
+}
+
+.photography-info {
+  text-align: center;
+  color: var(--gray);
+  font-style: italic;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+}
+
+/* 照片模态框样式 */
+.photo-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: fadeIn 0.3s ease;
+}
+
+.photo-modal.show {
+  display: block;
+}
+
+.photo-modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-modal-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.photo-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.photo-modal-close:hover {
+  color: var(--accent);
+}
+
+.photo-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.photo-nav-btn {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-nav-btn:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+.photo-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.photo-nav-btn:disabled:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 摄影页面专用样式 */
+.photography-section {
+  margin-bottom: 3rem;
+}
+
+/* 地点概览样式 */
+.locations-overview {
+  margin-bottom: 4rem;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.location-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.location-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.location-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(52, 152, 219, 0.25);
+}
+
+.location-card.active:hover {
+  box-shadow: 0 15px 45px rgba(52, 152, 219, 0.3);
+}
+
+.location-preview {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.location-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.location-card:hover .location-preview img {
+  transform: scale(1.1);
+}
+
+.coming-soon-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  position: relative;
+}
+
+.coming-soon-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(52, 152, 219, 0.1) 10px,
+    rgba(52, 152, 219, 0.1) 20px
+  );
+}
+
+.coming-soon-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.coming-soon-placeholder span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.location-info {
+  padding: 1.5rem;
+}
+
+.location-info h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.location-info p {
+  color: var(--gray);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.location-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.location-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.coming-soon .location-meta {
+  color: var(--gray);
+  opacity: 0.7;
+}
+
+/* 地点详细页面样式 */
+.location-section {
+  margin-bottom: 5rem;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.location-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.location-title {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.location-subtitle {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.location-description {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(52, 152, 219, 0.02));
+  border-radius: 16px;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.location-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0;
+  text-align: justify;
+}
+
+.location-details {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8fafc;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.detail-item i {
+  color: var(--accent);
+  font-size: 1.2rem;
+  min-width: 20px;
+}
+
+.detail-item span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* 未来地点样式 */
+.future-locations {
+  margin-bottom: 4rem;
+}
+
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.future-card {
+  background: linear-gradient(135deg, var(--white), #f8fafc);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.future-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+}
+
+.future-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.future-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.future-card p {
+  color: var(--gray);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.collection-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent);
+}
+
+.collection-description {
+  font-size: 1.1rem;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.about-photography {
+  margin-top: 3rem;
+}
+
+.about-photography h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.about-photography p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.photography-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--light-bg), rgba(52, 152, 219, 0.05));
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.contact-photography {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(40, 167, 69, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+}
+
+.contact-photography a {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-photography a:hover {
+  text-decoration: underline;
+}
+
 /* 页脚 */
 footer {
   background: var(--primary);
@@ -981,5 +1495,129 @@ footer {
   .article-header {
     margin: -1.5rem -1.5rem 1.5rem -1.5rem;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+  
+  /* 摄影画廊响应式 */
+  .photography-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .photo-item {
+    aspect-ratio: 1/1;
+  }
+  
+  .photo-overlay i {
+    font-size: 1.5rem;
+  }
+  
+  .photography-info {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  
+  .photo-modal-content {
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  .photo-modal-close {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+  
+  .photo-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .photo-modal-nav {
+    padding: 0 10px;
+  }
+  
+  /* 摄影页面响应式 */
+  .locations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .location-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .location-section {
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .location-title {
+    font-size: 2rem;
+  }
+  
+  .location-subtitle {
+    font-size: 1rem;
+  }
+  
+  .location-description {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .location-description p {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .location-details {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .detail-item {
+    padding: 0.8rem;
+  }
+  
+  .future-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .future-card {
+    padding: 1.5rem;
+  }
+  
+  .future-icon {
+    font-size: 2.5rem;
+  }
+  
+  .collection-title {
+    font-size: 1.5rem;
+  }
+  
+  .collection-description {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  
+  .photography-stats {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .contact-photography {
+    padding: 1rem;
+    font-size: 0.9rem;
   }
 }
