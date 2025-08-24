@@ -11,18 +11,8 @@
 /photography-fuzhou /photography-fuzhou.html 200
 /sitemap           /sitemap.html           200
 
-# 博客文章重定向
-/blog/3dgs         /blog/blog-3dgs.html         200
-/blog/3dgs-deploy  /blog/blog-3dgs-deploy.html  200
-/blog/dgs          /blog/blog-dgs.html          200
-/blog/dsg-world    /blog/blog-dsg-world.html    200
-/blog/gauss-tr     /blog/blog-gauss-tr.html     200
-/blog/gaussian-cut /blog/blog-gaussian-cut.html 200
-/blog/gaussian-occ /blog/blog-gaussian-occ.html 200
-/blog/mvsplat      /blog/blog-mvsplat.html      200
-/blog/self-splat   /blog/blog-self-splat.html   200
-/blog/semantic-splat /blog/blog-semantic-splat.html 200
-/blog/splatformer  /blog/blog-splatformer.html  200
+# 博客文章重定向 - 简化方案：直接使用.html文件
+# 用户可以直接访问 /blog/blog-xxx.html
 
 # 带.html后缀的URL重定向到无后缀版本（永久重定向）
 /index.html           /             301

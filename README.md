@@ -39,17 +39,21 @@ dongjiacheng06.github.io/
 │   ├── sitemap.html           # 网站地图
 │
 ├── blog/                  # 博客文章目录
-│       ├── blog-3dgs.html
-│       ├── blog-3dgs-deploy.html
-│       ├── blog-dgs.html
-│       ├── blog-dsg-world.html
-│       ├── blog-gauss-tr.html
-│       ├── blog-gaussian-cut.html
-│       ├── blog-gaussian-occ.html
-│       ├── blog-mvsplat.html
-│       ├── blog-self-splat.html
-│       ├── blog-semantic-splat.html
-│       └── blog-splatformer.html
+│   ├── blog-3dgs.html         # 实际的博客文章文件
+│   ├── blog-3dgs-deploy.html
+│   ├── blog-dgs.html
+│   ├── blog-dsg-world.html
+│   ├── blog-gauss-tr.html
+│   ├── blog-gaussian-cut.html
+│   ├── blog-gaussian-occ.html
+│   ├── blog-mvsplat.html
+│   ├── blog-self-splat.html
+│   ├── blog-semantic-splat.html
+│   ├── blog-splatformer.html
+│   └── */index.html           # 友好URL重定向文件
+│       ├── 3dgs/index.html    # 重定向到 blog-3dgs.html
+│       ├── splatformer/index.html # 重定向到 blog-splatformer.html
+│       └── ... (其他重定向)
 │
 ├── assets/               # 静态资源
 │   ├── css/             # 样式文件

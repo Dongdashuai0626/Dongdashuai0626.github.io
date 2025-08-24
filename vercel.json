@@ -31,50 +31,7 @@
       "src": "^/sitemap$",
       "dest": "/sitemap.html"
     },
-    {
-      "src": "^/blog/3dgs$",
-      "dest": "/blog/blog-3dgs.html"
-    },
-    {
-      "src": "^/blog/3dgs-deploy$",
-      "dest": "/blog/blog-3dgs-deploy.html"
-    },
-    {
-      "src": "^/blog/dgs$",
-      "dest": "/blog/blog-dgs.html"
-    },
-    {
-      "src": "^/blog/dsg-world$",
-      "dest": "/blog/blog-dsg-world.html"
-    },
-    {
-      "src": "^/blog/gauss-tr$",
-      "dest": "/blog/blog-gauss-tr.html"
-    },
-    {
-      "src": "^/blog/gaussian-cut$",
-      "dest": "/blog/blog-gaussian-cut.html"
-    },
-    {
-      "src": "^/blog/gaussian-occ$",
-      "dest": "/blog/blog-gaussian-occ.html"
-    },
-    {
-      "src": "^/blog/mvsplat$",
-      "dest": "/blog/blog-mvsplat.html"
-    },
-    {
-      "src": "^/blog/self-splat$",
-      "dest": "/blog/blog-self-splat.html"
-    },
-    {
-      "src": "^/blog/semantic-splat$",
-      "dest": "/blog/blog-semantic-splat.html"
-    },
-    {
-      "src": "^/blog/splatformer$",
-      "dest": "/blog/blog-splatformer.html"
-    },
+
     {
       "src": "^/(.+)\\.html$",
       "status": 301,
