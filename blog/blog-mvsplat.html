@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVSplat: Efficient 3D Gaussian Splatting from Sparse Multi-View Images | Jiacheng Dong</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <!-- MathJax configuration -->
     <script>
         window.MathJax = {
@@ -22,13 +22,13 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
     <!-- JavaScript -->
-    <script src="assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <a href="../index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -37,26 +37,26 @@
             <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
                 <li class="nav-section" role="none">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#news">News</a>
-                    <a href="index.html#research">Research</a>
-                    <a href="index.html#experience">Experience</a>
-                    <a href="index.html#education">Education</a>
-                    <a href="index.html#awards">Awards</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#news">News</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#experience">Experience</a>
+                    <a href="../index.html#education">Education</a>
+                    <a href="../index.html#awards">Awards</a>
+                    <a href="../index.html#contact">Contact</a>
                 </li>
                 <!-- External pages -->
                 <li class="nav-external" role="none">
-                    <a href="hobbies.html">Hobbies</a>
-                    <a href="photography.html">Photography</a>
-                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../hobbies.html">Hobbies</a>
+                    <a href="../photography.html">Photography</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        <a href="../blog.html" class="back-to-blog">← 返回博客首页</a>
         
         <article class="article">
             <header class="article-header">
@@ -79,7 +79,7 @@
 
                 <h2>方法</h2>
 
-                <p><img src="paper_notes/image%207.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image%207.png" alt="image.png"></p>
 
                 <p>MVSplat 的核心目标是学习一个前馈网络fθ，该网络接收 K 个稀疏视角的图像 {Ii} 及其对应的相机内外参矩阵 {Pi} 作为输入，然后直接输出一组完整的3D高斯基元参数 。这些参数包括中心位置μj、不透明度 αj、协方差 Σj 和以球谐函数表示的颜色 cj 。</p>
 
@@ -101,7 +101,7 @@
                     </li>
                 </ul>
 
-                <p><img src="paper_notes/image%208.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image%208.png" alt="image.png"></p>
 
                 <ul>
                     <li><strong>代价体构建 (Cost-volume-construction)</strong>
@@ -152,7 +152,7 @@
 
                 <p>l2 损失和 LPIPS 损失的线性组合，权重分别为 1 和 0.05 。</p>
 
-                <p><img src="paper_notes/image%209.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image%209.png" alt="image.png"></p>
 
                 <h2>贡献/成果</h2>
 
@@ -446,8 +446,8 @@
             <div class="footer-links">
                 <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
                 <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
-                <a href="index.html" aria-label="Visit homepage">主页</a>
-                <a href="blog.html" aria-label="Visit blog page">博客</a>
+                <a href="../index.html" aria-label="Visit homepage">主页</a>
+                <a href="../blog.html" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSG-World: Learning a 3D Gaussian World Model from Dual State Videos | Jiacheng Dong</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
     <!-- MathJax configuration -->
     <script>
         window.MathJax = {
@@ -22,13 +22,13 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
     <!-- JavaScript -->
-    <script src="assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <a href="../index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -37,26 +37,26 @@
             <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
                 <li class="nav-section" role="none">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#news">News</a>
-                    <a href="index.html#research">Research</a>
-                    <a href="index.html#experience">Experience</a>
-                    <a href="index.html#education">Education</a>
-                    <a href="index.html#awards">Awards</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#news">News</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#experience">Experience</a>
+                    <a href="../index.html#education">Education</a>
+                    <a href="../index.html#awards">Awards</a>
+                    <a href="../index.html#contact">Contact</a>
                 </li>
                 <!-- External pages -->
                 <li class="nav-external" role="none">
-                    <a href="hobbies.html">Hobbies</a>
-                    <a href="photography.html">Photography</a>
-                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../hobbies.html">Hobbies</a>
+                    <a href="../photography.html">Photography</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        <a href="../blog.html" class="back-to-blog">← 返回博客首页</a>
         
         <article class="article">
             <header class="article-header">
@@ -91,7 +91,7 @@
                     <li><strong>基于显式3D表示的方法</strong>：虽然3D高斯溅射（3D Gaussian Splatting）等技术能够显式地重建场景，但当处理单个状态的观测时，常常因为物体遮挡而需要进行复杂的多阶段处理，例如分割、背景补全和图像修复。这些步骤不仅增加了系统的复杂性，还容易引入和累积错误，导致最终生成的场景失真或模糊。</li>
                 </ol>
                 
-                <img src="image-2.png" alt="传统单状态流程" loading="lazy">
+                <img src="../assets/images/image-2.png" alt="传统单状态流程" loading="lazy">
                 <div class="image-caption">传统单状态流程需要经过分割、后处理和修复等多个步骤</div>
                 
                 <h2>方法</h2>
@@ -102,7 +102,7 @@
                 <h3>实现流程</h3>
                 <p>DSG-World的实现流程包含以下几个关键步骤：</p>
                 
-                <img src="image.png" alt="DSG-World工作流程" loading="lazy">
+                <img src="../assets/images/image.png" alt="DSG-World工作流程" loading="lazy">
                 <div class="image-caption">DSG-World工作流程图</div>
                 
                 <h4>1. 双向对齐 (Bidirectional Alignment)</h4>
@@ -123,7 +123,7 @@
                 <h3>定性比较</h3>
                 <p>在模拟新的场景状态时，传统方法往往会出现物体边界模糊、背景损坏或产生伪影等问题。而DSG-World生成的场景则较为干净、完整，与真实的场景配置高度一致。</p>
                 
-                <img src="image-1.png" alt="实验结果对比" loading="lazy">
+                <img src="../assets/images/image-1.png" alt="实验结果对比" loading="lazy">
                 <div class="image-caption">DSG-World与其他方法的实验结果对比</div>
                 
                 <h3>定量比较</h3>
@@ -200,8 +200,8 @@
             <div class="footer-links">
                 <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
                 <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
-                <a href="index.html" aria-label="Visit homepage">主页</a>
-                <a href="blog.html" aria-label="Visit blog page">博客</a>
+                <a href="../index.html" aria-label="Visit homepage">主页</a>
+                <a href="../blog.html" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GaussianCut: Interactive Segmentation via Graph Cut for 3D Gaussian Splatting | Jiacheng Dong</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <!-- MathJax configuration -->
     <script>
         window.MathJax = {
@@ -22,13 +22,13 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
     <!-- JavaScript -->
-    <script src="assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <a href="../index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -37,26 +37,26 @@
             <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
                 <li class="nav-section" role="none">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#news">News</a>
-                    <a href="index.html#research">Research</a>
-                    <a href="index.html#experience">Experience</a>
-                    <a href="index.html#education">Education</a>
-                    <a href="index.html#awards">Awards</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#news">News</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#experience">Experience</a>
+                    <a href="../index.html#education">Education</a>
+                    <a href="../index.html#awards">Awards</a>
+                    <a href="../index.html#contact">Contact</a>
                 </li>
                 <!-- External pages -->
                 <li class="nav-external" role="none">
-                    <a href="hobbies.html">Hobbies</a>
-                    <a href="photography.html">Photography</a>
-                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../hobbies.html">Hobbies</a>
+                    <a href="../photography.html">Photography</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        <a href="../blog.html" class="back-to-blog">← 返回博客首页</a>
         
         <article class="article">
             <header class="article-header">
@@ -73,7 +73,7 @@
 
                 <p>它的核心原理是把所有3D高斯点看作一个关系图（Graph），然后用经典的"图割"（Graph Cut）算法，来高效地把物体从场景里"切割"出来。这个方法最大的好处是，它作用于已经训练好的3D场景，不需要任何额外的训练。</p>
 
-                <p><img src="paper_notes/image.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image.png" alt="image.png"></p>
 
                 <h2>背景</h2>
 
@@ -103,7 +103,7 @@
                     <li><strong>将用户输入映射到高斯（不透明度x透射率加权）</strong></li>
                 </ol>
 
-                <p><img src="paper_notes/image%201.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image%201.png" alt="image.png"></p>
 
                 <ol>
                     <li><strong>构建高斯图网络</strong>：将场景中所有的3D高斯点组织成一个图（Graph），点与点之间通过边连接。</li>
@@ -112,7 +112,7 @@
 
                 <p>能量函数：</p>
 
-                <p><img src="paper_notes/image%202.png" alt="image.png"></p>
+                <p><img src="../paper_notes/image%202.png" alt="image.png"></p>
 
                 <h2>讨论与局限</h2>
 
@@ -178,8 +178,8 @@
             <div class="footer-links">
                 <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
                 <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
-                <a href="index.html" aria-label="Visit homepage">主页</a>
-                <a href="blog.html" aria-label="Visit blog page">博客</a>
+                <a href="../index.html" aria-label="Visit homepage">主页</a>
+                <a href="../blog.html" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
