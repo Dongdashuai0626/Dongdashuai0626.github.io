@@ -13,67 +13,67 @@
     },
     {
       "src": "^/blog$",
-      "dest": "/blog.html"
+      "dest": "/pages/blog.html"
     },
     {
       "src": "^/hobbies$",
-      "dest": "/hobbies.html"
+      "dest": "/pages/hobbies.html"
     },
     {
       "src": "^/photography$",
-      "dest": "/photography.html"
+      "dest": "/pages/photography.html"
     },
     {
       "src": "^/photography-fuzhou$",
-      "dest": "/photography-fuzhou.html"
+      "dest": "/pages/photography-fuzhou.html"
     },
     {
       "src": "^/sitemap$",
-      "dest": "/sitemap.html"
+      "dest": "/pages/sitemap.html"
     },
     {
       "src": "^/blog/3dgs$",
-      "dest": "/blog-3dgs.html"
+      "dest": "/pages/blog/blog-3dgs.html"
     },
     {
       "src": "^/blog/3dgs-deploy$",
-      "dest": "/blog-3dgs-deploy.html"
+      "dest": "/pages/blog/blog-3dgs-deploy.html"
     },
     {
       "src": "^/blog/dgs$",
-      "dest": "/blog-dgs.html"
+      "dest": "/pages/blog/blog-dgs.html"
     },
     {
       "src": "^/blog/dsg-world$",
-      "dest": "/blog-dsg-world.html"
+      "dest": "/pages/blog/blog-dsg-world.html"
     },
     {
       "src": "^/blog/gauss-tr$",
-      "dest": "/blog-gauss-tr.html"
+      "dest": "/pages/blog/blog-gauss-tr.html"
     },
     {
       "src": "^/blog/gaussian-cut$",
-      "dest": "/blog-gaussian-cut.html"
+      "dest": "/pages/blog/blog-gaussian-cut.html"
     },
     {
       "src": "^/blog/gaussian-occ$",
-      "dest": "/blog-gaussian-occ.html"
+      "dest": "/pages/blog/blog-gaussian-occ.html"
     },
     {
       "src": "^/blog/mvsplat$",
-      "dest": "/blog-mvsplat.html"
+      "dest": "/pages/blog/blog-mvsplat.html"
     },
     {
       "src": "^/blog/self-splat$",
-      "dest": "/blog-self-splat.html"
+      "dest": "/pages/blog/blog-self-splat.html"
     },
     {
       "src": "^/blog/semantic-splat$",
-      "dest": "/blog-semantic-splat.html"
+      "dest": "/pages/blog/blog-semantic-splat.html"
     },
     {
       "src": "^/blog/splatformer$",
-      "dest": "/blog-splatformer.html"
+      "dest": "/pages/blog/blog-splatformer.html"
     },
     {
       "src": "^/(.+)\\.html$",

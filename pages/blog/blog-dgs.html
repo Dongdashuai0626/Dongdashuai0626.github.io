@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSG-World: Learning a 3D Gaussian World Model from Dual State Videos | Jiacheng Dong</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
+                <!-- Main page sections -->
+                <li class="nav-section" role="none">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#education">Education</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external" role="none">
+                    <a href="hobbies.html">Hobbies</a>
+                    <a href="photography.html">Photography</a>
+                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        
+        <article class="article">
+            <header class="article-header">
+                <h1 class="article-title">DSG-World: Learning a 3D Gaussian World Model from Dual State Videos</h1>
+                <div class="article-meta">
+                    <span>发布时间：2025年7月29日</span> | <span>作者：董嘉铖</span>
+                </div>
+                <div class="article-tags">
+                    <span class="tag">3D Vision</span>
+                    <span class="tag">Neural Rendering</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Research</span>
+                </div>
+            </header>
+            
+            <div class="article-content">
+                <div class="info-box">
+                    <p>本文介绍了一种名为DSG-World的新方法，可以从双状态视频中学习3D高斯世界模型。该方法能够从有限的、稀疏的真实观测中构建一个完整、可编辑的三维世界模型，包括物体遮挡的部分。</p>
+                    <p>论文链接：<a href="https://arxiv.org/pdf/2506.05217" target="_blank">DSG-World: Learning a 3D Gaussian World Model from Dual State Videos</a></p>
+                </div>
+
+                <h2>引言</h2>
+                <p>从有限的、部分遮挡的真实世界观测中构建3D世界模型是一项具有挑战性的任务。传统的3D世界建模方法存在一些局限性，包括训练困难、缺乏明确的3D结构和物理一致性，以及在处理单个状态观测时因物体遮挡而需要进行复杂的多阶段处理等问题。</p>
+                
+                <p>浙江大学的研究人员在论文《DSG-World: Learning a 3D Gaussian World Model from Dual State Videos》中提出了一种新的框架，利用同一场景在两种不同物体配置下的双状态观测，从而构建3D世界模型。</p>
+                
+                <h2>相关工作</h2>
+                <p>当前的3D世界建模方法大致可分为两类：</p>
+                
+                <ol>
+                    <li><strong>基于隐式生成模型的方法</strong>：这类方法通常难以训练，并且缺乏明确的3D结构和物理一致性，导致它们在需要精确交互和模拟的任务中表现不佳。</li>
+                    <li><strong>基于显式3D表示的方法</strong>：虽然3D高斯溅射（3D Gaussian Splatting）等技术能够显式地重建场景，但当处理单个状态的观测时，常常因为物体遮挡而需要进行复杂的多阶段处理，例如分割、背景补全和图像修复。这些步骤不仅增加了系统的复杂性，还容易引入和累积错误，导致最终生成的场景失真或模糊。</li>
+                </ol>
+                
+                <img src="image-2.png" alt="传统单状态流程" loading="lazy">
+                <div class="image-caption">传统单状态流程需要经过分割、后处理和修复等多个步骤</div>
+                
+                <h2>方法</h2>
+                <p>DSG-World利用同一场景下两种被轻微扰动的观测状态。这两种状态的视频提供了互补的可见性。在状态一中被遮挡的区域，在状态二中可能变得可见。这种互补信息有助于缓解状态转换中的遮挡问题，使得场景重建更加稳定和完整。</p>
+                
+                <p>DSG-World是一个端到端的框架，它直接从这两种状态的观测中构建一个分割感知的3D高斯世界模型，无需进行图像修复或依赖密集的观测数据。</p>
+                
+                <h3>实现流程</h3>
+                <p>DSG-World的实现流程包含以下几个关键步骤：</p>
+                
+                <img src="image.png" alt="DSG-World工作流程" loading="lazy">
+                <div class="image-caption">DSG-World工作流程图</div>
+                
+                <h4>1. 双向对齐 (Bidirectional Alignment)</h4>
+                <p>框架首先为两个状态分别构建高斯场（G₁ 和 G₂）。然后，它通过已知的物体变换关系，将状态一的高斯场转换到状态二的配置下，并将其渲染结果与状态二的真实观测进行比较，反之亦然。这种双向的监督强制模型学习到两个状态之间的光度和语义一致性，确保物体在不同配置下的对应关系是准确的。</p>
+                
+                <h4>2. 伪状态引导对齐 (Pseudo-state Guided Alignment)</h4>
+                <p>为了进一步提升模型的泛化能力，研究者们引入了一个伪中间状态。这个虚拟状态是通过几何约束构建的，作为两个真实观测状态之间的共享参考空间。通过将两个高斯场都转换到这个共同的伪状态下进行比较和对齐，模型可以更好地弥合两个输入状态之间的差异，从而更有效地推广到未曾见过的中间场景配置中。</p>
+                
+                <h4>3. 协同协修剪 (Collaborative Co-Pruning)</h4>
+                <p>由于初始分割可能不完美，状态转换后可能会留下一些错位或多余的高斯点。DSG-World设计了一种协同修剪策略。它通过检查一个转换后的高斯点能否在目标状态的几何中找到可靠的对应点来滤除这些异常值。这种双向的几何一致性检查能有效移除冗余或错位的成分，使模型更加干净、精确。</p>
+                
+                <h4>4. 协同粘贴 (Co-pasting)</h4>
+                <p>与传统方法依赖算法进行背景补全不同，DSG-World利用双状态的互补性，直接从另一个状态中粘贴被遮挡的背景高斯点来完成场景补全。这种方法称为协同粘贴，它比基于修复的方法更准确。</p>
+                
+                <h2>实验结果</h2>
+                <p>研究团队在自己构建的包含合成和真实场景的数据集上进行了实验。他们将DSG-World与多种基于分割和修复的主流方法进行了比较，如GaussianEditor、Gaussian Grouping和GaussianCut等。</p>
+                
+                <h3>定性比较</h3>
+                <p>在模拟新的场景状态时，传统方法往往会出现物体边界模糊、背景损坏或产生伪影等问题。而DSG-World生成的场景则较为干净、完整，与真实的场景配置高度一致。</p>
+                
+                <img src="image-1.png" alt="实验结果对比" loading="lazy">
+                <div class="image-caption">DSG-World与其他方法的实验结果对比</div>
+                
+                <h3>定量比较</h3>
+                <p>在量化指标上，DSG-World在峰值信噪比（PSNR）和结构相似性（SSIM）两项关键指标上表现良好。这表明其生成的场景在像素层面更接近真实情况，在结构上也保持了较高的保真度。</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>模型</th>
+                            <th>Sim PSNR (↑)</th>
+                            <th>Real PSNR (↑)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">分割</td>
+                            <td>GaussianEditor</td>
+                            <td>25.82</td>
+                            <td>23.25</td>
+                        </tr>
+                        <tr>
+                            <td>Gaussian Grouping</td>
+                            <td>26.22</td>
+                            <td>22.74</td>
+                        </tr>
+                        <tr>
+                            <td>Gaussiancut</td>
+                            <td>26.79</td>
+                            <td>23.43</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">分割+修复</td>
+                            <td>Gaussian Grouping*+knn</td>
+                            <td>29.31</td>
+                            <td>23.28</td>
+                        </tr>
+                        <tr>
+                            <td>DecoupledGaussian+remesh</td>
+                            <td>29.50</td>
+                            <td>24.28</td>
+                        </tr>
+                        <tr>
+                            <td>Graphcut+depth</td>
+                            <td>30.88</td>
+                            <td>24.40</td>
+                        </tr>
+                        <tr>
+                            <td><strong>双状态</strong></td>
+                            <td><strong>DSG-world (ours)</strong></td>
+                            <td><strong>38.37</strong></td>
+                            <td><strong>27.52</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>消融实验也证明了其各个组件的有效性，特别是伪状态引导对齐策略，它对性能提升起到了重要作用，因为它能有效解决仅靠两个状态无法完全消除的遮挡模糊性问题。</p>
+                
+                <h2>局限性</h2>
+                <p>该方法要求两个状态的观测具有互补性，如果物体移动范围过小，导致某些区域在两个状态下都被遮挡，那么重建的准确性就会受到影响。此外，当前模型没有考虑光照变化，移动物体后其静态的阴影会影响真实感。</p>
+                
+                <h2>结论</h2>
+                <p>DSG-World通过双状态观测策略，绕开了传统3D世界建模中对复杂后处理和修复流程的依赖，为构建高效、精确且可交互的3D世界模型提供了一条新的路径。该方法能够高保真地渲染场景，并支持对物体的实时操控和模拟，在机器人技术、虚实转换等领域具有应用潜力。</p>
+                
+                <h2>参考文献</h2>
+                <p><a href="https://arxiv.org/pdf/2506.05217" target="_blank">DSG-World: Learning a 3D Gaussian World Model from Dual State Videos</a></p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="index.html" aria-label="Visit homepage">主页</a>
+                <a href="blog.html" aria-label="Visit blog page">博客</a>
+            </div>
+            <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
+            <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

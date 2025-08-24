@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSG-World: Learning a 3D Gaussian World Model from Dual State Videos | Jiacheng Dong</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
+                <!-- Main page sections -->
+                <li class="nav-section" role="none">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#education">Education</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external" role="none">
+                    <a href="hobbies.html">Hobbies</a>
+                    <a href="photography.html">Photography</a>
+                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        
+        <article class="article">
+            <header class="article-header">
+                <h1 class="article-title">DSG-World: Learning a 3D Gaussian World Model from Dual State Videos</h1>
+                <div class="article-meta">
+                    <span>发布时间：2025年8月2日</span> | <span>作者：董嘉铖</span>
+                </div>
+            </header>
+            
+            <div class="article-content">
+                <h2>背景</h2>
+
+                <ol>
+                    <li>从有限稀疏的观测中重建模型是一个挑战</li>
+                    <li>目前大部分模型生成依赖隐式生成模型
+                        <ol>
+                            <li>Hard to train</li>
+                            <li>black box</li>
+                        </ol>
+                    </li>
+                    <li>基于单个状态的显式三维方法（如三维高斯溅射）在物体移动后，会因为遮挡而留下空洞，需要依赖分割、修复等多个处理阶段。这个过程不仅复杂，而且2D分割的不准确性会传递到3D空间，导致伪影和模糊，影响模拟的保真度。</li>
+                    <li>密集观测的依赖</li>
+                </ol>
+
+                <h2>方法</h2>
+
+                <ol>
+                    <li>从两个状态的场景中构建两个独立的三维高斯场</li>
+                    <li>Bidirectional Alignment</li>
+                    <li>Pseudo-state Guided Alignment</li>
+                    <li>Collaborative Co-Pruning</li>
+                </ol>
+
+                <h2>目的</h2>
+
+                <p>~~训练一个模型，使模型能正确移动物体~~</p>
+
+                <p>从有限的、稀疏的真实观测中，构建一个完整、可编辑的三维世界模型（包括物体遮挡的部分）</p>
+
+                <p>我感觉有点像3DGS：A与B的融合，通过A与B两个数据，产生一个完整的背景与前景（前景的标签是本来通过掩码获得的？）</p>
+
+                <p>输入是A与B与他们的图像掩码（如何获得？）</p>
+
+                <h2>Q&A</h2>
+
+                <h3>Q：</h3>
+
+                <p><strong>图像掩码是三维重构的每一张图片都要用一个框框起来吗？</strong></p>
+
+                <h3>A：</h3>
+
+                <ul>
+                    <li><strong>输入内容</strong>：输入确实是状态A和状态B的两组图像集，以及它们对应的分割掩码。</li>
+                    <li><strong>什么是图像掩码</strong>：图像掩码<strong>不是用一个"框框起来"</strong>（那个叫"边界框"，Bounding Box）。"分割掩码 (Segmentation Mask)"要精确得多，它是一个与原始图像大小完全相同的图层，用不同的颜色<strong>像素级地</strong>标出了每个物体轮廓的精确范围。</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="index.html" aria-label="Visit homepage">主页</a>
+                <a href="blog.html" aria-label="Visit blog page">博客</a>
+            </div>
+            <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
+            <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelfSplat: Pose-Free and 3D Prior-Free Generalizable 3D Gaussian Splatting | Jiacheng Dong</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
+                <!-- Main page sections -->
+                <li class="nav-section" role="none">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#education">Education</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external" role="none">
+                    <a href="hobbies.html">Hobbies</a>
+                    <a href="photography.html">Photography</a>
+                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="blog.html" class="back-to-blog">← 返回博客首页</a>
+        
+        <article class="article">
+            <header class="article-header">
+                <h1 class="article-title">SelfSplat: Pose-Free and 3D Prior-Free Generalizable 3D Gaussian Splatting</h1>
+                <div class="article-meta">
+                    <span>发布时间：2025年8月2日</span> | <span>作者：董嘉铖</span>
+                </div>
+            </header>
+            
+            <div class="article-content">
+                <h2>问题/背景</h2>
+
+                <p>现有 <strong>3D Gaussian Splatting (3D-GS)</strong> 方法依赖<strong>精确相机位姿</strong>和<strong>逐场景优化</strong>，无法直接处理"野外"视频；而 NeRF-系 pose-free 工作又常需预训练模型或后期微调，且体渲渲染开销大。SelfSplat 旨在同时解决 <strong>"无位姿、无 3D 先验、一次前向即可重建"</strong> 的难题，兼顾速度与质量。</p>
+
+                <h2>方法</h2>
+
+                <p><img src="paper_notes/image%2012.png" alt="image.png"></p>
+
+                <h3>SelfSplat 方法详解（CVPR 2025）</h3>
+
+                <blockquote>
+                    <p>任务设定输入为一组三张未标定帧 $(I_{c1}, I_t, I_{c2})$。网络须<strong>一次前向</strong>同时预测</p>
+                    <ol>
+                        <li>两个上下文帧的 <strong>像素对齐 Gaussians</strong> $G_{c1},G_{c2}$；</li>
+                        <li>相对位姿 $T_{c1\!\to t},T_{c2\!\to t}$；</li>
+                        <li>连贯的深度图。</li>
+                    </ol>
+                </blockquote>
+
+                <h3>1 总体框架</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>模块</th>
+                            <th>作用</th>
+                            <th>关键实现</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>多视 CNN + Swin 编码器</strong></td>
+                            <td>提取跨视图特征 $F^{\text{mv}}$</td>
+                            <td>ResNet 下采样 × 6 层 Swin，局部–跨窗注意力</td>
+                        </tr>
+                        <tr>
+                            <td><strong>单目 CroCo-ViT 编码器</strong></td>
+                            <td>补充纹理/弱视差场景信息 $F^{\text{mono}}$</td>
+                            <td>共享权重 CroCo-v2，16×16 patch</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DPT 融合 & 密集预测</strong></td>
+                            <td>融合多/单视特征并输出 • 初始深度 $\tilde D_{k}$ • 高斯属性 $\tilde G_{k}$</td>
+                            <td>Dense-Prediction Transformer + 金字塔 CNN</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Matching-aware Pose Net</strong></td>
+                            <td>高精度相机位姿</td>
+                            <td>2D U-Net + cross-attention，输入匹配特征 $F^{\text{ma}}$ 与射线嵌入 $E_{\text{int}}$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pose-aware Depth Refine</strong></td>
+                            <td>跨视一致深度 $D_k$</td>
+                            <td>轻量 U-Net，利用 Plücker 射线嵌入 $E_{\text{ext}}(T)$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gaussian Decoder</strong></td>
+                            <td>δ-offset→3D 反投影，合并到目标坐标系</td>
+                            <td>公式 (4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>2 像素对齐 3D Gaussians</h3>
+
+                <p>密集预测模块输出</p>
+
+                <p>$\tilde G_k=\{(\delta x_j,\delta y_j,\alpha_j,\Sigma_j,c_j)\}_{j=1}^{HW},\quad
+                \tilde D_k$</p>
+
+                <p>将 $(\delta x_j,\delta y_j)$加到对应像素坐标，再用精化后深度 $D_k$ 反投影到 3D，生成每帧的 $G_k$。随后通过预测位姿把 $G_{c1},G_{c2}$ 变换到目标视角统一成 $G$。</p>
+
+                <h3>3 匹配感知位姿网络</h3>
+
+                <ul>
+                    <li><strong>跨视匹配</strong>：先用 MatchingNet 输出同分辨率特征 $F^{\text{ma}}_{c1},F^{\text{ma}}t,F^{\text{ma}}{c2}$。</li>
+                    <li><strong>射线嵌入</strong>：每像素拼接 $E_{\text{int}}(K^{-1}p)$提供尺度信息。</li>
+                    <li><strong>PoseNet</strong>：两分支 U-Net + cross-attn，同步预测 $T_{c1\!\to t}$ 与 $T_{c2\!\to t}$。</li>
+                </ul>
+
+                <blockquote>
+                    <p>效果：去掉匹配模块，平移误差↑1.5°，PSNR↓0.4 dB。</p>
+                </blockquote>
+
+                <h3>4 基于位姿的深度精化</h3>
+
+                <p>初始深度常在多视间不一致，导致高斯重叠。</p>
+
+                <ul>
+                    <li>将 $\tilde D_k$、原图 $I_k$、以及 Plücker 射线嵌入 $E_{\text{ext}}(T_{k\!\to t})$输入 Refinement U-Net；</li>
+                    <li>输出残差 $\Delta D_k$，得到一致深度 $D_k=\tilde D_k+\Delta D_k$。</li>
+                </ul>
+
+                <p>去掉精化模块，PSNR↓0.6 dB，平移误差↑1.1°。</p>
+
+                <h3>5 自监督训练目标</h3>
+
+                <ol>
+                    <li><strong>重投影光度损失</strong></li>
+                </ol>
+
+                <p>$\mathcal L_{\text{proj}}
+                =\text{pe}(I_t, I_{c1\!\to t}){\text{SSIM+L1}}
+                +\text{pe}(I_t, I{c2\!\to t})$</p>
+
+                <ol>
+                    <li><strong>3DGS 渲染损失</strong>  
+                    $\mathcal L_{\text{ren}}
+                    =\!\!\!\sum_{I_k\in\{I_{c1},I_{c2},I_t\}}\!\!\!\gamma_1 (1-\text{SSIM})+\gamma_2\|I_k-\hat I_k\|_2$</li>
+                    <li><strong>总损失</strong>  
+                    $\mathcal{L}{\text{total}}=\lambda_1\mathcal{L}{\text{proj}}+\lambda_2\mathcal{L}_{\text{ren}}$</li>
+                </ol>
+
+                <p>渲染损失对位姿的显式梯度  
+                $\partial \mathcal L_{\text{ren}}/\partial t,\partial R$ 直接约束外参，使纯图像重投影易陷入的尺度/漂移歧义得到缓解。</p>
+
+                <blockquote>
+                    <p><strong>消融</strong>：去掉 $\mathcal L_{\text{ren}}$会导致旋转误差×8、平移误差×5</p>
+                </blockquote>
+
+                <h3>6 融合策略与优势</h3>
+
+                <p>显式 3D 表征 ↔ 自监督几何 的双向增益：</p>
+
+                <ul>
+                    <li>3DGS 渲染梯度强化位姿 / 深度收敛；</li>
+                    <li>可靠位姿 / 深度保证 Gaussians 精确对齐，提高渲染质量</li>
+                </ul>
+
+                <h3>7 训练设置一览</h3>
+
+                <ul>
+                    <li>完全<strong>无需任何 3D 先验</strong>；CroCo-v2 权重亦为纯自监督。</li>
+                    <li>数据集：RE10K、ACID、DL3DV；50 k iterations 训练即可。</li>
+                    <li>单前向即可在测试时获得 3D 场景与新视角渲染，且推理速度优于 NeRF-系方法。</li>
+                </ul>
+
+                <h3>8 小结 – 你可借鉴的要点</h3>
+
+                <ol>
+                    <li><strong>双流特征</strong>（跨视 Swin + 单目 ViT）比纯 cost-volume 更稳健，可直接替换到你打算加入 SWIN-Transformer 的 3DGS 方案。</li>
+                    <li><strong>渲染损失反向监督位姿</strong>，避免依赖外部 Flow/SfM。</li>
+                    <li><strong>Plücker-ray + Cross-Attention</strong> 的深度精化，能在弱纹理区域保持多视一致性。</li>
+                </ol>
+
+                <p>如需代码落地建议或公式推导细节，随时告诉我！</p>
+
+                <h2>实验</h2>
+
+                <p><img src="paper_notes/image%2013.png" alt="image.png"></p>
+
+                <h2>贡献/成果</h2>
+
+                <ul>
+                    <li><strong>提出 SelfSplat</strong>：首个 *pose-free & 3D-prior-free* 的可泛化 3D-GS 框架；</li>
+                    <li><strong>自监督深度/位姿 × 显式 3D-GS</strong> 的统一训练策略，实现几何-外参互相提升；</li>
+                    <li><strong>Matching-aware Pose Network</strong> 引入跨视图注意力，提高位姿精度；</li>
+                    <li><strong>Pose-aware Depth Refinement</strong> 通过 Plücker-ray embedding 消除多视深度不一致；</li>
+                    <li>在 RealEstate10K、ACID、DL3DV 三大数据集上全面超越 SOTA，并展现强跨数据集泛化。</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="index.html" aria-label="Visit homepage">主页</a>
+                <a href="blog.html" aria-label="Visit blog page">博客</a>
+            </div>
+            <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
+            <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -5,24 +5,24 @@
 /home     /index.html    200
 
 # 页面重定向 - 无后缀到有后缀（内部重写）
-/blog              /blog.html              200
-/hobbies           /hobbies.html           200
-/photography       /photography.html       200
-/photography-fuzhou /photography-fuzhou.html 200
-/sitemap           /sitemap.html           200
+/blog              /pages/blog.html              200
+/hobbies           /pages/hobbies.html           200
+/photography       /pages/photography.html       200
+/photography-fuzhou /pages/photography-fuzhou.html 200
+/sitemap           /pages/sitemap.html           200
 
 # 博客文章重定向
-/blog/3dgs         /blog-3dgs.html         200
-/blog/3dgs-deploy  /blog-3dgs-deploy.html  200
-/blog/dgs          /blog-dgs.html          200
-/blog/dsg-world    /blog-dsg-world.html    200
-/blog/gauss-tr     /blog-gauss-tr.html     200
-/blog/gaussian-cut /blog-gaussian-cut.html 200
-/blog/gaussian-occ /blog-gaussian-occ.html 200
-/blog/mvsplat      /blog-mvsplat.html      200
-/blog/self-splat   /blog-self-splat.html   200
-/blog/semantic-splat /blog-semantic-splat.html 200
-/blog/splatformer  /blog-splatformer.html  200
+/blog/3dgs         /pages/blog/blog-3dgs.html         200
+/blog/3dgs-deploy  /pages/blog/blog-3dgs-deploy.html  200
+/blog/dgs          /pages/blog/blog-dgs.html          200
+/blog/dsg-world    /pages/blog/blog-dsg-world.html    200
+/blog/gauss-tr     /pages/blog/blog-gauss-tr.html     200
+/blog/gaussian-cut /pages/blog/blog-gaussian-cut.html 200
+/blog/gaussian-occ /pages/blog/blog-gaussian-occ.html 200
+/blog/mvsplat      /pages/blog/blog-mvsplat.html      200
+/blog/self-splat   /pages/blog/blog-self-splat.html   200
+/blog/semantic-splat /pages/blog/blog-semantic-splat.html 200
+/blog/splatformer  /pages/blog/blog-splatformer.html  200
 
 # 带.html后缀的URL重定向到无后缀版本（永久重定向）
 /index.html           /             301
