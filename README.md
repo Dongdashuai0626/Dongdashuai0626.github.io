@@ -1,214 +1,132 @@
-# 董嘉铖个人网站
+# 董嘉铖的技术博客
 
-这是我的个人学术主页，用来展示研究工作、个人项目和学术成就。
+基于Jekyll Chirpy主题的个人技术博客，专注于3D视觉、深度学习等领域的技术分享。
 
-## 🚀 快速开始
+## 🌐 访问地址
 
-### 本地开发
+**博客地址**: https://dongjiacheng06.github.io/blog/
+
+**学术主页**: https://dongjiacheng06.github.io/
+
+## 📝 内容方向
+
+- **3D Gaussian Splatting**: 神经渲染与3D重建技术
+- **3D Vision**: 立体视觉、点云处理、场景理解  
+- **Deep Learning**: 计算机视觉算法与应用
+- **Research Notes**: 论文阅读笔记与思考
+
+## 🚀 本地开发
+
+### 环境要求
+
+- Ruby 3.x
+- Jekyll 4.x
+- Bundler
+
+### 安装步骤
+
 ```bash
-# 克隆项目
-git clone https://github.com/dongjiacheng06/dongjiacheng06.github.io.git
-cd dongjiacheng06.github.io
+# 克隆仓库
+git clone https://github.com/dongjiacheng06/blog.git
+cd blog
 
-# 直接用浏览器打开index.html即可
-open index.html
+# 安装依赖
+bundle install
+
+# 本地运行
+bundle exec jekyll serve
 ```
 
-### 在线访问
-- 主页：https://dongjiacheng06.github.io
-- 博客：https://dongjiacheng06.github.io/blog
-- 摄影作品：https://dongjiacheng06.github.io/photography
+访问 http://localhost:4000/blog/ 查看效果。
 
 ## 📁 项目结构
 
 ```
-dongjiacheng06.github.io/
-├── index.html              # 主页
-├── 404.html               # 404错误页面
-├── manifest.json          # PWA配置
-├── sw.js                  # Service Worker
-├── robots.txt             # 爬虫配置
-├── vercel.json            # Vercel部署配置
-├── _redirects             # Netlify重定向规则
-├── 
-├── 📄 主要页面
-│   ├── blog.html              # 博客列表
-│   ├── hobbies.html           # 兴趣爱好
-│   ├── photography.html       # 摄影作品
-│   ├── photography-fuzhou.html # 福州摄影
-│   ├── sitemap.html           # 网站地图
-│
-├── blog/                  # 博客文章目录
-│   ├── blog-3dgs.html         # 3D Gaussian Splatting
-│   ├── blog-3dgs-deploy.html  # 3DGS部署教程
-│   ├── blog-dgs.html          # DSG-World
-│   ├── blog-dsg-world.html    # DSG-World详解
-│   ├── blog-gauss-tr.html     # Gaussian Transformer
-│   ├── blog-gaussian-cut.html # Gaussian Cut
-│   ├── blog-gaussian-occ.html # Gaussian Occlusion
-│   ├── blog-mvsplat.html      # MVSplat
-│   ├── blog-self-splat.html   # Self-Splat
-│   ├── blog-semantic-splat.html # Semantic Splat
-│   └── blog-splatformer.html  # Splatformer
-│
-├── assets/               # 静态资源
-│   ├── css/             # 样式文件
-│   │   ├── main.css     # 主样式文件（导入其他CSS）
-│   │   ├── base.css     # 基础样式和变量
-│   │   ├── components.css # 组件样式
-│   │   ├── layout.css   # 布局样式
-│   │   ├── animations.css # 动画效果
-│   │   ├── loading.css  # 加载动画
-│   │   └── responsive.css # 响应式设计
-│   ├── js/
-│   │   └── main.js      # 主JavaScript文件
-│   └── images/          # 图片资源
-│       ├── personal_photo.jpg
-│       ├── 3dgs.png
-│       ├── TBR.png
-│       └── photography/ # 摄影作品
-│           └── fuzhou-collection/
-│
-├── components/          # HTML组件
-│   ├── footer.html
-│   └── navigation.html
-│
-├── docs/               # 文档
-│   ├── README.md       # 本文档
-│   ├── 3DGS.md        # 3D Gaussian Splatting相关文档
-│   └── test-report.md  # 测试报告
-│
-├── paper_notes/        # 论文笔记截图
-└── temp/              # 临时文件
+blog/
+├── _config.yml           # Jekyll配置
+├── _posts/              # 博客文章
+├── _tabs/               # 页面标签
+├── assets/              # 静态资源
+├── .github/workflows/   # GitHub Actions
+└── README.md           # 说明文档
 ```
 
-## ✨ 功能特性
+## ✍️ 写作指南
 
-- [x] **响应式设计** - 支持所有设备尺寸
-- [x] **友好URL** - 无HTML后缀的干净URL结构
-- [x] **PWA支持** - 可作为应用安装使用
-- [x] **SEO优化** - 完整的元数据和结构化数据
-- [x] **多平台部署** - 支持GitHub Pages、Netlify、Vercel等
-- [x] **智能404页面** - 提供智能建议和导航
-- [x] **搜索功能** - 在网站地图页面提供搜索
-- [x] **现代UI/UX** - 美观的现代化界面设计
-- [x] **组件化架构** - 模块化的HTML组件
+### 创建新文章
 
-## 🎯 URL结构
+1. 在 `_posts/` 目录下创建文件：`YYYY-MM-DD-title.md`
+2. 添加Front Matter：
 
-网站采用友好的URL结构：
-
-### 主要页面
-- 主页: `/`
-- 博客列表: `/blog`
-- 兴趣爱好: `/hobbies`
-- 摄影作品: `/photography`
-- 福州摄影: `/photography-fuzhou`
-- 网站地图: `/sitemap`
-
-### 博客文章（简化方案 - 直接使用.html文件）
-- 3D Gaussian Splatting: `/blog/blog-3dgs.html`
-- 3DGS部署教程: `/blog/blog-3dgs-deploy.html`
-- Dynamic Gaussian: `/blog/blog-dgs.html`
-- DSG-World: `/blog/blog-dsg-world.html`
-- Gaussian Transformer: `/blog/blog-gauss-tr.html`
-- Splatformer: `/blog/blog-splatformer.html`
-- 更多文章...
-
-### 旧链接自动重定向
-所有带`.html`后缀的旧链接会自动重定向到新的友好URL。
-
-## 🛠 技术栈
-
-- **前端**: 纯HTML + CSS + JavaScript
-- **样式**: 模块化CSS架构
-- **部署**: GitHub Pages / Netlify / Vercel
-- **PWA**: Service Worker + Web App Manifest
-- **SEO**: 结构化数据 + Meta标签优化
-
-## 📝 内容管理
-
-### 添加新博客文章（简化方案）
-1. 在`blog/`目录下创建新的HTML文件，命名格式：`blog-标题.html`
-2. 在`blog.html`中添加文章链接
-3. 无需修改路由配置文件，直接使用文件路径访问
-
-**示例**：
-- 创建文件：`blog/blog-new-article.html`
-- 访问URL：`https://dongjiacheng06.github.io/blog/blog-new-article.html`
-
-### 添加新页面
-1. 在`pages/`目录下创建HTML文件
-2. 更新路由配置文件
-3. 在导航中添加链接
-
-### 更新样式
-- 修改`assets/css/`下的相应CSS文件
-- 主要样式变量在`base.css`中定义
-
-## 🚀 部署
-
-### GitHub Pages
-推送到`main`分支即可自动部署。
-
-### Vercel
-```bash
-npm i -g vercel
-vercel
+```yaml
+---
+title: 文章标题
+date: YYYY-MM-DD HH:MM:SS +0800
+categories: [分类1, 分类2]
+tags: [标签1, 标签2]
+math: true    # 启用数学公式
+mermaid: true # 启用图表
+---
 ```
 
-### Netlify
-直接拖拽文件夹到Netlify Dashboard，或连接GitHub仓库。
+3. 编写Markdown内容
 
-## 📊 性能优化
+### 数学公式
 
-- ✅ 图片懒加载
-- ✅ CSS/JS压缩和优化
-- ✅ CDN资源预连接
-- ✅ Service Worker缓存
-- ✅ 响应式图片
-- ✅ 关键资源预加载
+支持LaTeX语法：
 
-## 🔧 开发指南
+```latex
+$$E = mc^2$$
 
-### 文件组织原则
-- **页面文件**: 统一放在`pages/`目录
-- **博客文章**: 放在`pages/blog/`子目录
-- **静态资源**: 放在`assets/`目录下
-- **文档**: 放在`docs/`目录
-- **组件**: 放在`components/`目录
+$\alpha + \beta = \gamma$
+```
 
-### CSS架构
-采用模块化CSS架构：
-- `base.css`: CSS变量、重置样式、基础样式
-- `components.css`: 组件特定样式
-- `layout.css`: 布局相关样式
-- `animations.css`: 动画和过渡效果
-- `responsive.css`: 响应式设计
-- `loading.css`: 加载状态和用户体验
+### 代码块
 
-### 命名规范
-- **文件名**: 使用kebab-case（如`blog-3dgs.html`）
-- **CSS类名**: 使用BEM方法论
-- **图片**: 使用描述性名称
+支持语法高亮：
 
-## 📱 浏览器支持
+```python
+def hello_world():
+    print("Hello, World!")
+```
 
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- 移动端浏览器全面支持
+## 🛠 部署说明
 
-## 🤝 贡献
+### GitHub Pages自动部署
 
-欢迎提交Issue和Pull Request来改进这个项目！
+1. 推送代码到GitHub
+2. GitHub Actions自动构建和部署
+3. 访问 https://dongjiacheng06.github.io/blog/
 
-## 📧 联系方式
+### 配置要点
+
+在 `_config.yml` 中确保以下配置正确：
+
+```yaml
+url: "https://dongjiacheng06.github.io"
+baseurl: "/blog"
+```
+
+## 🎨 主题特性
+
+基于 [Jekyll Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 主题：
+
+- ✅ 响应式设计
+- ✅ 深色/浅色模式切换
+- ✅ 搜索功能
+- ✅ 分类和标签
+- ✅ 数学公式支持
+- ✅ 代码语法高亮
+- ✅ 社交媒体集成
+- ✅ SEO优化
+- ✅ PWA支持
+
+## 📞 联系方式
 
 - **邮箱**: Dong48@illinois.edu
 - **GitHub**: [@dongjiacheng06](https://github.com/dongjiacheng06)
-- **研究组**: [CVNext Lab](https://cvnext.github.io/)
+- **主页**: [dongjiacheng06.github.io](https://dongjiacheng06.github.io)
 
 ---
 
-© 2025 董嘉铖. 保留所有权利.
+欢迎交流与讨论！🎉
