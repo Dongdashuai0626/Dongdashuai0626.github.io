@@ -42,7 +42,7 @@
     <!-- Navigation -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <a href="/" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -51,19 +51,20 @@
             <ul class="nav-links" role="navigation">
                 <!-- Main page sections -->
                 <li class="nav-section" role="none">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#news">News</a>
-                    <a href="index.html#research">Research</a>
-                    <a href="index.html#experience">Experience</a>
-                    <a href="index.html#education">Education</a>
-                    <a href="index.html#awards">Awards</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="/#about">About</a>
+                    <a href="/#news">News</a>
+                    <a href="/#research">Research</a>
+                    <a href="/#experience">Experience</a>
+                    <a href="/#education">Education</a>
+                    <a href="/#awards">Awards</a>
+                    <a href="/#contact">Contact</a>
                 </li>
                 <!-- External pages -->
                 <li class="nav-external" role="none">
-                    <a href="hobbies.html">Hobbies</a>
-                    <a href="photography.html">Photography</a>
-                    <a href="blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="/hobbies">Hobbies</a>
+                    <a href="/photography">Photography</a>
+                    <a href="/blog" class="active" aria-current="page">Blog</a>
+                    <a href="/sitemap">Sitemap</a>
                 </li>
             </ul>
         </nav>
@@ -93,7 +94,7 @@
                     <p class="blog-excerpt">
                         在Windows 11 + CUDA 11.8环境下部署3D Gaussian Splatting遇到的问题与解决方案。本文详细记录了从环境准备到成功运行的完整过程，包括Visual Studio版本冲突、中文路径问题、GLM库缺失等常见问题的解决方法。这些经验同样适用于其他3D视觉项目如TBR框架的部署。
                     </p>
-                    <a href="blog-3dgs.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/3dgs" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -111,7 +112,7 @@
                     <p class="blog-excerpt">
                         本文介绍了一种名为DSG-World的新方法，可以从双状态视频中学习3D高斯世界模型。该方法能够从有限的、稀疏的真实观测中构建一个完整、可编辑的三维世界模型，包括物体遮挡的部分。
                     </p>
-                    <a href="blog-dgs.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/dgs" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -128,7 +129,7 @@
                     <p class="blog-excerpt">
                         GaussianCut 是一种新方法，可以让你在由3D高斯点构成的3D场景里，通过互动来选中并分割出你想要的物体。你只需要在一张2D图片上随便点几下、画几笔或者输入文字，它就能自动把整个3D场景里的高斯点分成"前景"（你选中的物体）和"背景"。
                     </p>
-                    <a href="blog-gaussian-cut.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/gaussian-cut" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -145,7 +146,7 @@
                     <p class="blog-excerpt">
                         GaussTR 利用了"3D高斯溅射"（Gaussian Splatting）技术的可微分渲染特性，将预测出的3D高斯"拍扁"渲染回2D图像视角。然后，它并不与人工标注的数据进行比较，而是将渲染出的2D特征图与强大的视觉基础模型（Vision Foundation Models, 如CLIP, DINOv2）提取的特征进行对齐。
                     </p>
-                    <a href="blog-gauss-tr.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/gauss-tr" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -162,7 +163,7 @@
                     <p class="blog-excerpt">
                         SelfSplat 旨在同时解决"无位姿、无 3D 先验、一次前向即可重建"的难题，兼顾速度与质量。现有3D Gaussian Splatting (3D-GS)方法依赖精确相机位姿和逐场景优化，无法直接处理"野外"视频。
                     </p>
-                    <a href="blog-self-splat.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/self-splat" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -179,7 +180,7 @@
                     <p class="blog-excerpt">
                         SemanticSplat 提出一种 feed-forward（一次前向即可推理）的 3D 语义高斯重建框架，将几何-外观-语义融合到单一显式表示中。以语义各向异性高斯扩展 3D Gaussian Splatting。
                     </p>
-                    <a href="blog-semantic-splat.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/semantic-splat" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -196,7 +197,7 @@
                     <p class="blog-excerpt">
                         MVSplat 的核心目标是学习一个前馈网络fθ，该网络接收 K 个稀疏视角的图像 {Ii} 及其对应的相机内外参矩阵 {Pi} 作为输入，然后直接输出一组完整的3D高斯基元参数。
                     </p>
-                    <a href="blog-mvsplat.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/mvsplat" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -213,7 +214,7 @@
                     <p class="blog-excerpt">
                         GaussianOcc 是一项用于自动驾驶和机器人领域中至关重要的感知任务，其目标是理解车辆周围三维空间的几何结构和每个部分的语义类别。这项技术为系统提供了全面的空间认知。
                     </p>
-                    <a href="blog-gaussian-occ.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/gaussian-occ" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -230,7 +231,7 @@
                     <p class="blog-excerpt">
                         SPLATFORMER 极端视角下优化gaussian splatting表现。尽管3DGS技术在生成逼真的三维场景方面表现出色，但它的渲染质量在面对"分布外（Out-of-Distribution, OOD）"的测试视角时会急剧下降。
                     </p>
-                    <a href="blog-splatformer.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/splatformer" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -249,7 +250,7 @@
                     <p class="blog-excerpt">
                         本文档记录了 3D Gaussian Splatting 在 Windows 环境下的完整部署过程，包括遇到的问题、解决方案以及最终的环境配置。
                     </p>
-                    <a href="blog-3dgs-deploy.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/3dgs-deploy" class="read-more">阅读全文 →</a>
                 </div>
             </article>
             <article class="blog-card">
@@ -267,7 +268,7 @@
                     <p class="blog-excerpt">
                         本文介绍了一种名为DSG-World的新方法，可以从双状态视频中学习3D高斯世界模型。该方法能够从有限的、稀疏的真实观测中构建一个完整、可编辑的三维世界模型，包括物体遮挡的部分。
                     </p>
-                    <a href="blog-dsg-world.html" class="read-more">阅读全文 →</a>
+                    <a href="/blog/dsg-world" class="read-more">阅读全文 →</a>
                 </div>
             </article>
         </div>
@@ -279,8 +280,8 @@
             <div class="footer-links">
                 <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
                 <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
-                <a href="index.html" aria-label="Visit homepage">主页</a>
-                <a href="blog.html" aria-label="Visit blog page">博客</a>
+                <a href="/" aria-label="Visit homepage">主页</a>
+                <a href="/blog" aria-label="Visit blog page">博客</a>
             </div>
             <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
             <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">

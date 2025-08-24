@@ -1,9 +1,28 @@
-# Apache .htaccess 配置文件
-# 用于性能优化和安全增强
+# Apache配置文件 - 隐藏HTML后缀并启用友好URL
 
-# ===== 启用压缩 =====
+# 启用URL重写引擎
+RewriteEngine On
+
+# 强制使用不带.html后缀的URL
+# 如果请求的是.html文件，重定向到不带后缀的版本
+RewriteCond %{THE_REQUEST} /([^.]+)\.html[\s?] [NC]
+RewriteRule ^ /%1? [R=301,L]
+
+# 如果请求的文件不存在，尝试添加.html后缀
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 特殊处理首页
+RewriteRule ^$ index.html [L]
+
+# 设置默认文档
+DirectoryIndex index.html
+
+# 启用压缩以提高性能
 <IfModule mod_deflate.c>
-    # 压缩HTML、CSS、JavaScript、XML等文本文件
+    # 压缩HTML, CSS, JavaScript, Text, XML等文件
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/xml
@@ -13,104 +32,61 @@
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE application/json
-    
-    # 排除已经压缩的文件
-    SetEnvIfNoCase Request_URI \
-        \.(?:gif|jpe?g|png|swf|woff|woff2)$ no-gzip dont-vary
-    SetEnvIfNoCase Request_URI \
-        \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
 </IfModule>
 
-# ===== 浏览器缓存 =====
+# 设置缓存头
 <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType application/x-javascript "access plus 1 year"
-    ExpiresByType text/javascript "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType text/html "access plus 1 day"
-    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresActive on
+    
+    # 图片缓存1个月
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    
+    # CSS和JS缓存1周
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-javascript "access plus 1 week"
+    
+    # HTML文件不缓存
+    ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
-# ===== 缓存控制头 =====
+# 安全设置
 <IfModule mod_headers.c>
-    # 设置缓存头
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|woff|woff2)$">
-        Header set Cache-Control "public, max-age=31536000"
-    </FilesMatch>
+    # 防止点击劫持
+    Header always append X-Frame-Options SAMEORIGIN
     
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "public, max-age=86400"
-    </FilesMatch>
+    # 防止MIME类型嗅探
+    Header set X-Content-Type-Options nosniff
     
-    # 安全头
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # 启用XSS保护
+    Header set X-XSS-Protection "1; mode=block"
     
-    # 预加载HSTS（如果使用HTTPS）
-    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # 引用策略
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# ===== ETags优化 =====
-<IfModule mod_headers.c>
-    # 移除ETags（因为我们使用了Expires头）
-    Header unset ETag
-</IfModule>
-FileETag None
+# 错误页面
+ErrorDocument 404 /404.html
 
-# ===== 禁用服务器签名 =====
-ServerTokens Prod
-
-# ===== 阻止访问敏感文件 =====
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+# 防止访问敏感文件
+<Files ".htaccess">
     Order Allow,Deny
     Deny from all
-</FilesMatch>
+</Files>
 
-# ===== URL重写（如果需要） =====
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # 强制HTTPS（如果需要）
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-    
-    # 移除文件扩展名（如果需要）
-    # RewriteCond %{REQUEST_FILENAME} !-d
-    # RewriteCond %{REQUEST_FILENAME} !-f
-    # RewriteRule ^([^\.]+)$ $1.html [NC,L]
-</IfModule>
+<Files "*.md">
+    Order Allow,Deny
+    Deny from all
+</Files>
 
-# ===== MIME类型 =====
-<IfModule mod_mime.c>
-    # Web字体
-    AddType font/woff .woff
-    AddType font/woff2 .woff2
-    
-    # 现代图片格式
-    AddType image/webp .webp
-    AddType image/avif .avif
-    
-    # JavaScript
-    AddType application/javascript .js
-    AddType application/json .json
-    
-    # CSS
-    AddType text/css .css
-</IfModule>
-
-# ===== 启用KeepAlive =====
-<IfModule mod_headers.c>
-    Header set Connection keep-alive
-</IfModule>
+<Files "*.json">
+    <RequireAll>
+        Require not uri "manifest.json"
+        Order Allow,Deny
+        Deny from all
+    </RequireAll>
+</Files>
