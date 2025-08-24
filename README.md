@@ -39,21 +39,17 @@ dongjiacheng06.github.io/
 │   ├── sitemap.html           # 网站地图
 │
 ├── blog/                  # 博客文章目录
-│   ├── blog-3dgs.html         # 实际的博客文章文件
-│   ├── blog-3dgs-deploy.html
-│   ├── blog-dgs.html
-│   ├── blog-dsg-world.html
-│   ├── blog-gauss-tr.html
-│   ├── blog-gaussian-cut.html
-│   ├── blog-gaussian-occ.html
-│   ├── blog-mvsplat.html
-│   ├── blog-self-splat.html
-│   ├── blog-semantic-splat.html
-│   ├── blog-splatformer.html
-│   └── */index.html           # 友好URL重定向文件
-│       ├── 3dgs/index.html    # 重定向到 blog-3dgs.html
-│       ├── splatformer/index.html # 重定向到 blog-splatformer.html
-│       └── ... (其他重定向)
+│   ├── blog-3dgs.html         # 3D Gaussian Splatting
+│   ├── blog-3dgs-deploy.html  # 3DGS部署教程
+│   ├── blog-dgs.html          # DSG-World
+│   ├── blog-dsg-world.html    # DSG-World详解
+│   ├── blog-gauss-tr.html     # Gaussian Transformer
+│   ├── blog-gaussian-cut.html # Gaussian Cut
+│   ├── blog-gaussian-occ.html # Gaussian Occlusion
+│   ├── blog-mvsplat.html      # MVSplat
+│   ├── blog-self-splat.html   # Self-Splat
+│   ├── blog-semantic-splat.html # Semantic Splat
+│   └── blog-splatformer.html  # Splatformer
 │
 ├── assets/               # 静态资源
 │   ├── css/             # 样式文件
@@ -110,12 +106,13 @@ dongjiacheng06.github.io/
 - 福州摄影: `/photography-fuzhou`
 - 网站地图: `/sitemap`
 
-### 博客文章
-- 3D Gaussian Splatting: `/blog/3dgs`
-- 3DGS部署教程: `/blog/3dgs-deploy`
-- Dynamic Gaussian: `/blog/dgs`
-- DSG-World: `/blog/dsg-world`
-- Gaussian Transformer: `/blog/gauss-tr`
+### 博客文章（简化方案 - 直接使用.html文件）
+- 3D Gaussian Splatting: `/blog/blog-3dgs.html`
+- 3DGS部署教程: `/blog/blog-3dgs-deploy.html`
+- Dynamic Gaussian: `/blog/blog-dgs.html`
+- DSG-World: `/blog/blog-dsg-world.html`
+- Gaussian Transformer: `/blog/blog-gauss-tr.html`
+- Splatformer: `/blog/blog-splatformer.html`
 - 更多文章...
 
 ### 旧链接自动重定向
@@ -131,10 +128,14 @@ dongjiacheng06.github.io/
 
 ## 📝 内容管理
 
-### 添加新博客文章
-1. 在`pages/blog/`目录下创建新的HTML文件
-2. 更新`vercel.json`和`_redirects`文件添加路由
-3. 在`pages/blog.html`中添加文章链接
+### 添加新博客文章（简化方案）
+1. 在`blog/`目录下创建新的HTML文件，命名格式：`blog-标题.html`
+2. 在`blog.html`中添加文章链接
+3. 无需修改路由配置文件，直接使用文件路径访问
+
+**示例**：
+- 创建文件：`blog/blog-new-article.html`
+- 访问URL：`https://dongjiacheng06.github.io/blog/blog-new-article.html`
 
 ### 添加新页面
 1. 在`pages/`目录下创建HTML文件
