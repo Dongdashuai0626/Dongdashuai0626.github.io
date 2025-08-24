@@ -31,13 +31,14 @@ dongjiacheng06.github.io/
 ├── vercel.json            # Vercel部署配置
 ├── _redirects             # Netlify重定向规则
 ├── 
-├── pages/                 # 页面文件
-│   ├── blog.html         # 博客列表页
-│   ├── hobbies.html      # 兴趣爱好页
-│   ├── photography.html  # 摄影作品页
-│   ├── photography-fuzhou.html # 福州摄影专集
-│   ├── sitemap.html      # 网站地图
-│   └── blog/             # 博客文章
+├── 📄 主要页面
+│   ├── blog.html              # 博客列表
+│   ├── hobbies.html           # 兴趣爱好
+│   ├── photography.html       # 摄影作品
+│   ├── photography-fuzhou.html # 福州摄影
+│   ├── sitemap.html           # 网站地图
+│
+├── blog/                  # 博客文章目录
 │       ├── blog-3dgs.html
 │       ├── blog-3dgs-deploy.html
 │       ├── blog-dgs.html
